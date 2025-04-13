@@ -1,10 +1,12 @@
+import Header from "../components/Header";
+import Products from "../components/Products";
+
 function Homepage() {
   return (
     <>
-      <div className="bg-white text-black px-4 py-2 rounded hover:bg-red-500 transition">
-        hello world!!
-      </div>
-      <div></div>
+      <Header />
+      <img src="assets/images/logan.jpg" alt="" className="w-screen" />
+      <Products />
     </>
   );
 }
