@@ -1,0 +1,62 @@
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+
+function ProductDetail() {
+  const [count, setCount] = useState(0);
+  return (
+    <>
+      <div className="flex rounded bg-white border text-black justify-around items-center p-6 px-7 gap-6">
+        <div className="flex justify-center items-center">
+          <img
+            src="/assets/images/kecap.jpg"
+            alt=""
+            className="w-28 object-contain shadow mr-4"
+          />
+          <div className="flex flex-col font-bold">
+            <p className="text-[20px]">
+              Kecap Manis - Lombok Gandaria 1 Karton
+            </p>
+            <p>550 ML</p>
+            <p className="text-[#BC303E]">KMLG1</p>
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-centers items-end gap-3">
+          <div className="flex flex-col items-center justify-center gap-1">
+            <p className="text-[#BC303E]">Stock : 1234</p>
+            <div className="flex gap-3 justify-center items-center">
+              <FontAwesomeIcon
+                icon={faMinus}
+                onClick={() => setCount(count - 1)}
+                className="rounded-xl bg-[#D9D9D9] p-1 cursor-pointer"
+              />
+              <span className="border-2 rounded border-[#BC303E] px-4">
+                {count}
+              </span>
+              <FontAwesomeIcon
+                icon={faPlus}
+                onClick={() => setCount(count + 1)}
+                className="rounded-xl bg-[#BC303E] p-1 cursor-pointer text-white"
+              />
+            </div>
+          </div>
+          <div className="flex gap-3 items-center">
+            <FontAwesomeIcon
+              icon={faTrashCan}
+              className="text-[#BC303E] border-2 border-[#BC303E] rounded p-1 !h-6 cursor-pointer"
+            />
+            <button className="bg-white border-2 border-[#BC303E] text-[#BC303E] rounded px-3 py-1">
+              Edit Produk
+            </button>
+            <button className="bg-[#BC303E] border-2 border-[#BC303E] text-white rounded px-3 py-1">
+              Update Stock
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+export default ProductDetail;

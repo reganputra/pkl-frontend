@@ -1,4 +1,4 @@
-import Login from "../components/FormLogin";
+import Login from "../components/Fragments/Login/FormLogin";
 
 function LoginPage() {
   return (
