@@ -1,11 +1,10 @@
-import Header from "../components/Header";
-import Products from "../components/Products";
+import Header from "../components/Elements/Header";
+import Products from "../components/Fragments/Product/Products";
 
 function Homepage() {
   return (
     <>
       <Header />
-      <img src="assets/images/logan.jpg" alt="" className="w-screen" />
       <Products />
     </>
   );
