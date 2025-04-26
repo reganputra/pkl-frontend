@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <>
-      <div className="text-black bg-[#FFCF45] flex flex-col items-center">
+      <div className="text-black bg-[#FFCF45] flex flex-col items-center w-screen">
         <div className="flex gap-10 justify-center items-center py-16">
           <img
             src="/assets/images/LogoPerusahaan.png"
