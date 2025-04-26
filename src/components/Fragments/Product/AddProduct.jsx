@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function AddProduct({ closeAddProduct }) {
   return (
-    <div className="bg-black/40 flex justify-center items-center w-screen h-screen fixed top-0">
+    <div
+      className="bg-black/40 flex justify-center items-center w-screen h-screen fixed top-0"
+      onClick={() => closeAddProduct()}
+    >
       <form
         action=""
         method="post"
