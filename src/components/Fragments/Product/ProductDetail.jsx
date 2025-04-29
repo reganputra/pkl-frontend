@@ -15,11 +15,11 @@ function ProductDetail() {
             className="w-44 object-contain shadow mr-4"
           />
           <div className="flex flex-col font-bold">
-            <p className="text-[30px]/9">
+            <p className="text-[25px]/9">
               Kecap Manis - Lombok Gandaria 1 Karton
             </p>
-            <p className="text-[18px]">550 ML</p>
-            <p className="text-[#BC303E] text-[22px]">KMLG1</p>
+            <p className="text-[16px]">550 ML</p>
+            <p className="text-[#BC303E] text-[18px]">KMLG1</p>
           </div>
         </div>
 

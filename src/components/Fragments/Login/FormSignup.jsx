@@ -48,7 +48,7 @@ function Signup() {
 
         <p>
           Saya sudah punya akun!{" "}
-          <a href="/login">
+          <a href="/">
             <span className="font-bold">Masuk</span>
           </a>
         </p>

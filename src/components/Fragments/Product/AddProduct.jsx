@@ -3,20 +3,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function AddProduct({ closeAddProduct }) {
   return (
-    <div
-      className="bg-black/40 flex justify-center items-center w-screen h-screen fixed top-0"
-      onClick={() => closeAddProduct()}
-    >
+    <div className="fixed inset-0 flex justify-center items-center">
+      <div
+        className="absolute inset-0 bg-black/40"
+        onClick={() => closeAddProduct()}
+      ></div>
+
       <form
         action=""
         method="post"
-        className="flex flex-col bg-white justify-center items-center text-black border gap-3 w-fit p-8 rounded"
+        className="relative flex flex-col bg-white justify-center items-center text-black border gap-3 w-fit p-8 rounded"
+        onClick={(e) => e.stopPropagation()} // stop click inside form from closing modal
       >
         <FontAwesomeIcon
           icon={faXmark}
           className="flex self-end !h-6 cursor-pointer"
           onClick={() => closeAddProduct()}
         />
+
         <div className="flex gap-3">
           <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-1">
@@ -85,11 +89,12 @@ function AddProduct({ closeAddProduct }) {
 
         <input
           type="submit"
-          value="Tambahan"
+          value="Tambahkan"
           className="bg-[#BC303E] text-white rounded px-12 py-2 font-bold mt-4"
         />
       </form>
     </div>
   );
 }
+
 export default AddProduct;

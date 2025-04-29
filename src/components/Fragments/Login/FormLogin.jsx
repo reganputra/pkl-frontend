@@ -2,7 +2,7 @@ function Login() {
   return (
     <>
       <form
-        action=""
+        action="/home"
         method="post"
         className="bg-white rounded-lg text-black p-6 flex flex-col h-fit justify-center items-center gap-3 z-1"
       >
@@ -28,17 +28,18 @@ function Login() {
           />
         </div>
 
-        <label
-          htmlFor="submit"
+        <a
+          // type="submit"
+          // name="submit"
+          href="/home"
           className="bg-[#FFCF45] rounded-md py-2 w-full text-center mt-4"
         >
           Login
-        </label>
-        <button type="submit" name="submit" className="hidden"></button>
+        </a>
 
         <p>
           Saya belum punya akun!{" "}
-          <a href="/">
+          <a href="/daftar">
             <span className="font-bold">Daftar</span>
           </a>
         </p>

@@ -16,7 +16,9 @@ function StatusProductDetail({ children }) {
             <p className="text-[20px]/9">KMLG1</p>
           </div>
         </div>
-        <div className="w-100 flex justify-end">{children}</div>
+        <div className="w-100 flex flex-col items-end justify-between">
+          {children}
+        </div>
       </div>
     </>
   );
