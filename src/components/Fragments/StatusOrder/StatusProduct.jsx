@@ -1,0 +1,41 @@
+import { useState } from "react";
+import BoxIcon from "../../Elements/icons/box";
+import CheckIcon from "../../Elements/icons/check";
+import TruckIcon from "../../Elements/icons/truck";
+import AddPo from "./AddPo";
+
+function StatusProduct({ active, change }) {
+  const [showAddPo, setShowAddPo] = useState(false);
+  return (
+    <div
+      className={`bg-[#F5F5F5] pt-30 relative flex-col flex items-end ${active != 1 && "pb-13"}`}
+    >
+      <div className="flex justify-center gap-20 py-4 text-black bg-white w-screen">
+        <div className="flex flex-col items-center" onClick={() => change(1)}>
+          <BoxIcon color={active == 1 ? "red" : "black"} size={"size-12"} />
+          <p>Pending</p>
+        </div>
+        <div className="flex flex-col items-center" onClick={() => change(2)}>
+          <TruckIcon color={active == 2 ? "red" : "black"} size={"size-12"} />
+          <p>Dikirim</p>
+        </div>
+        <div className="flex flex-col items-center" onClick={() => change(3)}>
+          <CheckIcon color={active == 3 ? "red" : "black"} size={"size-12"} />
+          <p>Selesai</p>
+        </div>
+      </div>
+
+      {active == 1 && (
+        <button
+          className="bg-[#BC303E] rounded-2xl py-2 px-20 font-bold text-2xl w-fit my-5 mr-10"
+          onClick={() => setShowAddPo(true)}
+        >
+          Buat PO
+        </button>
+      )}
+
+      {showAddPo == true && <AddPo closeAddPo={() => setShowAddPo(false)} />}
+    </div>
+  );
+}
+export default StatusProduct;
