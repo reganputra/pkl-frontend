@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <>
@@ -8,9 +10,9 @@ function Header() {
           className="w-30"
         />
         <div className="flex justify-evenly items-center w-full text-black font-bold">
-          <a href="/home">Produk</a>
-          <a href="/status">Status Orderan</a>
-          <a href="/riwayat">Riwayat</a>
+          <Link to="/home">Produk</Link>
+          <Link to="/status">Status Orderan</Link>
+          <Link to="/riwayat">Riwayat</Link>
         </div>
         <button className="bg-white border-2 border-[#BC303E] text-[#BC303E] rounded px-4 py-1 h-max cursor-pointer">
           Logout
