@@ -1,4 +1,22 @@
+import { useEffect, useState } from "react";
+import axiosInstance from "../../../api/axiosinstance";
+import HistoryList from "./HistoryList";
+
 function Filter() {
+  const [history, setHistory] = useState(null);
+
+  useEffect(() => {
+    const fetchHistory = async () => {
+      try {
+        const response = await axiosInstance.get("/riwayat", {});
+        setHistory(response.data);
+      } catch (error) {
+        console.log(error.response?.data || error.message);
+      }
+    };
+    fetchHistory();
+  }, []);
+
   return (
     <>
       <form
@@ -10,8 +28,8 @@ function Filter() {
           name="month"
           id="month"
           className="bg-white text-black py-2 px-6 rounded border text-center w-40"
+          defaultValue="Bulan"
         >
-          <option selected>Bulan</option>
           <option value="1">Januari</option>
           <option value="2">Februari</option>
           <option value="3">Maret</option>
@@ -30,8 +48,8 @@ function Filter() {
           name="year"
           id="year"
           className="bg-white text-black py-2 px-6 rounded border text-center w-40"
+          defaultValue="Tahun"
         >
-          <option selected>Tahun</option>
           <option value="2025">2025</option>
           <option value="2024">2024</option>
           <option value="2023">2023</option>
@@ -44,6 +62,10 @@ function Filter() {
           Cari
         </button>
       </form>
+
+      {history && <HistoryList data={history} />}
+
+      <div className="bg-[#F5F5F5] pt-20"></div>
     </>
   );
 }

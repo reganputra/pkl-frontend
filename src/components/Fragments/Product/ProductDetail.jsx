@@ -3,29 +3,30 @@ import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
-function ProductDetail() {
+function ProductDetail({ data }) {
   const [count, setCount] = useState(0);
+
   return (
     <>
       <div className="flex rounded bg-white border text-black justify-around items-center p-6 px-7 w-9/12">
         <div className="flex justify-center items-center">
           <img
-            src="/assets/images/kecap.jpg"
+            src={data.image}
             alt=""
             className="w-44 object-contain shadow mr-4"
           />
           <div className="flex flex-col font-bold">
-            <p className="text-[25px]/9">
-              Kecap Manis - Lombok Gandaria 1 Karton
-            </p>
-            <p className="text-[16px]">550 ML</p>
-            <p className="text-[#BC303E] text-[18px]">KMLG1</p>
+            <p className="text-[25px]/9 w-80">{data.name}</p>
+            <p className="text-[16px]">{data.ukuranKemasan} ML</p>
+            <p className="text-[#BC303E] text-[18px]">{data.kodeBarang}</p>
           </div>
         </div>
 
         <div className="flex flex-col justify-centers items-end gap-3">
           <div className="flex flex-col items-center justify-center gap-1">
-            <p className="text-[#BC303E] text-[20px]">Stock : 1234</p>
+            <p className="text-[#BC303E] text-[20px]">
+              Stock : {data.quantity}
+            </p>
             <div className="flex gap-3 justify-center items-center">
               <FontAwesomeIcon
                 icon={faMinus}
