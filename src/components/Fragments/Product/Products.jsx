@@ -1,9 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductDetail from "./ProductDetail";
 import AddProduct from "./AddProduct";
+import axiosInstance from "../../../api/axiosinstance";
 
 function Products() {
   const [showAddProduct, setShowAddProduct] = useState(false);
+  const [products, setProducts] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axiosInstance.get("/items", {});
+        setProducts(response.data);
+      } catch (error) {
+        console.log(error.response?.data || error.message);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <>
       <div className="flex justify-center items-center w-screen gap-8 py-28 flex-col bg-white text-[#BC303E]">
@@ -14,9 +29,9 @@ function Products() {
         >
           Tambahkan Produk
         </button>
-        <ProductDetail />
-        <ProductDetail />
-        <ProductDetail />
+        {products?.map((product) => (
+          <ProductDetail data={product} key={product._id} />
+        ))}
       </div>
       {showAddProduct && (
         <AddProduct closeAddProduct={() => setShowAddProduct(false)} />

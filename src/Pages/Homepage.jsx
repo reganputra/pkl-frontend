@@ -5,7 +5,7 @@ import Products from "../components/Fragments/Product/Products";
 function Homepage() {
   return (
     <>
-      <Header />
+      <Header active={1} />
       <Products />
       <Footer />
     </>

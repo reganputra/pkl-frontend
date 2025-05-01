@@ -7,7 +7,7 @@ import DoneList from "../components/Fragments/StatusOrder/DoneList";
 function HistoryPage() {
   return (
     <>
-      <Header />
+      <Header active={3} />
       <Banner />
       <Filter />
       <DoneList />
