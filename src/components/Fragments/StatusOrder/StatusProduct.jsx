@@ -2,13 +2,11 @@ import { useState } from "react";
 import BoxIcon from "../../Elements/icons/box";
 import CheckIcon from "../../Elements/icons/check";
 import TruckIcon from "../../Elements/icons/truck";
-import AddPo from "./AddPo";
 import PendingList from "./PendingList";
 import SendingList from "./SendingList";
 import DoneList from "./DoneList";
 
 function StatusProduct() {
-  const [showAddPo, setShowAddPo] = useState(false);
   const [active, setActive] = useState(1);
   return (
     <>
@@ -40,15 +38,10 @@ function StatusProduct() {
         </div>
 
         {active == 1 && (
-          <button
-            className="bg-[#BC303E] rounded-2xl py-2 px-20 font-bold text-2xl w-fit my-5 mr-10"
-            onClick={() => setShowAddPo(true)}
-          >
+          <button className="bg-[#BC303E] rounded-2xl py-2 px-20 font-bold text-2xl w-fit my-5 mr-10">
             Buat PO
           </button>
         )}
-
-        {showAddPo == true && <AddPo closeAddPo={() => setShowAddPo(false)} />}
       </div>
 
       {active == 1 && <PendingList />}

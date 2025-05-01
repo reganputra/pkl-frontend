@@ -13,7 +13,7 @@ function AddPo({ closeAddPo }) {
         action=""
         method="post"
         className="relative flex flex-col bg-white justify-center items-center text-black border gap-3 w-fit p-8 rounded"
-        onClick={(e) => e.stopPropagation()} // important to stop clicks inside the modal
+        onClick={(e) => e.stopPropagation()}
       >
         <FontAwesomeIcon
           icon={faXmark}

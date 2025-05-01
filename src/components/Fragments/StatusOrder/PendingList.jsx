@@ -1,27 +1,23 @@
 import { useEffect, useState } from "react";
 import PendingCard from "./PendingCard";
-import axiosInstance from "../../../api/axiosinstance";
+import AddPo from "./AddPo";
 
 function PendingList() {
-  const [pendingList, setPendingList] = useState(null);
+  const [showAddPo, setShowAddPo] = useState(false);
+  const [noPo, setNoPo] = useState("");
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axiosInstance.get("/items", {});
-        setPendingList(response.data);
-      } catch (error) {
-        console.log(error.response?.data || error.message);
-      }
-    };
-    fetchProducts();
-  }, []);
+  function handleClick(x) {
+    setShowAddPo(true);
+    setNoPo(x);
+  }
 
   return (
-    <div className="flex flex-col gap-5 bg-[#F5F5F5]">
-      <PendingCard />
-      <PendingCard />
-    </div>
+    <>
+      <div className="flex flex-col gap-5 bg-[#F5F5F5]">
+        <PendingCard handleClick={(x) => handleClick(x)} />
+      </div>
+      {showAddPo && <AddPo closeAddPo={() => setShowAddPo(false)} />}
+    </>
   );
 }
 export default PendingList;
