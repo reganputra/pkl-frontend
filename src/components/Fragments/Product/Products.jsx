@@ -2,22 +2,29 @@ import { useEffect, useState } from "react";
 import ProductDetail from "./ProductDetail";
 import AddProduct from "./AddProduct";
 import axiosInstance from "../../../api/axiosinstance";
+import Cookies from "js-cookie";
 
 function Products() {
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [products, setProducts] = useState(null);
+  const [updateStock, setUpdateStock] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axiosInstance.get("/items", {});
+        const response = await axiosInstance.get("/items", {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: Cookies.get("token"),
+          },
+        });
         setProducts(response.data);
       } catch (error) {
         console.log(error.response?.data || error.message);
       }
     };
     fetchProducts();
-  }, []);
+  }, [updateStock]);
 
   return (
     <>
@@ -30,7 +37,11 @@ function Products() {
           Tambahkan Produk
         </button>
         {products?.map((product) => (
-          <ProductDetail data={product} key={product._id} />
+          <ProductDetail
+            data={product}
+            key={product._id}
+            onUpdateStock={() => setUpdateStock(!updateStock)}
+          />
         ))}
       </div>
       {showAddProduct && (
