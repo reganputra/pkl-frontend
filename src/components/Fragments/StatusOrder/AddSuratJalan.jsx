@@ -1,12 +1,12 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function AddPo({ closeAddPo }) {
+function AddSuratJalan({ closeAddSuratJalan }) {
   return (
     <div className="fixed inset-0 flex justify-center items-center">
       <div
         className="absolute inset-0 bg-black/40"
-        onClick={() => closeAddPo()}
+        onClick={() => closeAddSuratJalan()}
       ></div>
 
       <form
@@ -18,7 +18,7 @@ function AddPo({ closeAddPo }) {
         <FontAwesomeIcon
           icon={faXmark}
           className="flex self-end !h-6 cursor-pointer"
-          onClick={() => closeAddPo()}
+          onClick={() => closeAddSuratJalan()}
         />
         <p className="text-[#BC303E] text-3xl font-bold">No Surat Jalan</p>
         <input
@@ -36,4 +36,4 @@ function AddPo({ closeAddPo }) {
   );
 }
 
-export default AddPo;
+export default AddSuratJalan;

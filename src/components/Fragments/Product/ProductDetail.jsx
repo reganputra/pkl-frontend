@@ -2,9 +2,58 @@ import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import axiosInstance from "../../../api/axiosinstance";
+import DeleteConfirm from "./DeleteConfirm";
+import Cookies from "js-cookie";
 
-function ProductDetail({ data }) {
+function ProductDetail({ data, onUpdateStock }) {
   const [count, setCount] = useState(0);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
+  function handleUpdateStock() {
+    const updateStock = async () => {
+      try {
+        const response = await axiosInstance.patch(
+          `/items/${data._id}/update-quantity`,
+          { quantity: count },
+          {
+            headers: {
+              Authorization: Cookies.get("token"),
+            },
+          }
+        );
+        alert("Stock berhasil diupdate");
+        onUpdateStock();
+        setCount(0);
+      } catch (error) {
+        console.log(error.response?.data || error.message);
+      }
+    };
+    updateStock();
+  }
+
+  function handleConfirmDelete() {
+    setShowDeleteConfirm(false);
+    const deleteproduct = async () => {
+      try {
+        const response = await axiosInstance.delete(`/items/${data._id}`, {
+          headers: {
+            Authorization: Cookies.get("token"),
+          },
+        });
+        alert("Produk berhasil dihapus !!");
+        onUpdateStock();
+      } catch (error) {
+        console.log(error.response?.data || error.message);
+      }
+    };
+    deleteproduct();
+  }
+
+  function handleCancelDelete() {
+    setShowDeleteConfirm(false);
+    alert("Produk tidak jadi dihapus !!");
+  }
 
   return (
     <>
@@ -46,17 +95,29 @@ function ProductDetail({ data }) {
           <div className="flex gap-3 items-center">
             <FontAwesomeIcon
               icon={faTrashCan}
+              onClick={() => setShowDeleteConfirm(true)}
               className="text-[#BC303E] border-2 border-[#BC303E] rounded p-1 !h-7.5 cursor-pointer"
             />
             <button className="bg-white border-2 border-[#BC303E] text-[#BC303E] rounded px-3 py-1 text-[20px] whitespace-nowrap">
               Edit Produk
             </button>
-            <button className="bg-[#BC303E] border-2 border-[#BC303E] text-white rounded px-3 py-1 text-[20px] whitespace-nowrap">
+            <button
+              onClick={handleUpdateStock}
+              className="bg-[#BC303E] border-2 border-[#BC303E] text-white rounded px-3 py-1 text-[20px] whitespace-nowrap"
+            >
               Update Stock
             </button>
           </div>
         </div>
       </div>
+
+      {showDeleteConfirm && (
+        <DeleteConfirm
+          closeDeleteConfirm={() => setShowDeleteConfirm(false)}
+          confirm={() => handleConfirmDelete()}
+          cancel={() => handleCancelDelete()}
+        />
+      )}
     </>
   );
 }

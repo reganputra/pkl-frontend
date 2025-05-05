@@ -5,9 +5,32 @@ import TruckIcon from "../../Elements/icons/truck";
 import PendingList from "./PendingList";
 import SendingList from "./SendingList";
 import DoneList from "./DoneList";
+import axiosInstance from "../../../api/axiosinstance";
+import Cookies from "js-cookie";
 
 function StatusProduct() {
   const [active, setActive] = useState(1);
+  const [refresh, setRefresh] = useState(false);
+
+  const handleCreatePO = async () => {
+    try {
+      const token = Cookies.get("token");
+      const response = await axiosInstance.post(
+        "/po",
+        {},
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      alert("PO baru sudah berhasil dibuat !!");
+      setRefresh((prev) => !prev);
+    } catch (error) {
+      console.log(error.response?.data || error.message);
+    }
+  };
+
   return (
     <>
       <div
@@ -38,13 +61,16 @@ function StatusProduct() {
         </div>
 
         {active == 1 && (
-          <button className="bg-[#BC303E] rounded-2xl py-2 px-20 font-bold text-2xl w-fit my-5 mr-10">
+          <button
+            onClick={handleCreatePO}
+            className="bg-[#BC303E] rounded-2xl py-2 px-20 font-bold text-2xl w-fit my-5 mr-10"
+          >
             Buat PO
           </button>
         )}
       </div>
 
-      {active == 1 && <PendingList />}
+      {active == 1 && <PendingList refresh={refresh} />}
       {active == 2 && <SendingList />}
       {active == 3 && <DoneList />}
 

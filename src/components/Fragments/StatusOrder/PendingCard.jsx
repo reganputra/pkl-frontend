@@ -1,17 +1,15 @@
-import { useState } from "react";
 import StatusProductDetail from "../../Elements/StatusProductDetail";
 
-function PendingCard({ handleClick }) {
-  const noPo = "po-12345678";
+function PendingCard({ data }) {
   return (
     <>
-      <StatusProductDetail>
-        <p
-          className="font-bold text-[#BC303E] text-[21px]/9"
-          onClick={() => handleClick(noPo)}
-        >
-          Cek No PO Surat Jalan
+      <StatusProductDetail data={data}>
+        <p className="font-bold text-[#BC303E] text-[21px]/9">
+          Menunggu Konfirmasi
         </p>
+        <button className="bg-[#BC303E] text-white px-5 py-2 rounded-lg font-bold">
+          Kirim
+        </button>
       </StatusProductDetail>
     </>
   );

@@ -17,7 +17,7 @@ function Login() {
         password,
       });
 
-      Cookies.set("token", response.data.token, { expires: 7 });
+      Cookies.set("token", `Bearer ${response.data.token}`, { expires: 7 });
       navigate("/home");
     } catch (error) {
       alert(error.response?.data.message);

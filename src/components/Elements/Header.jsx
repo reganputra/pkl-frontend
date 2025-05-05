@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Header({ active }) {
+  const navigate = useNavigate();
+  function handleLogout() {
+    Cookies.remove("token");
+    navigate("/");
+  }
   return (
     <>
       <div className="flex z-10 justify-between items-center w-screen py-3 px-10 h-18 bg-[#FFCF45] absolute top-0 rounded-b-3xl">
@@ -20,7 +26,10 @@ function Header({ active }) {
             Riwayat
           </Link>
         </div>
-        <button className="bg-white border-2 border-[#BC303E] text-[#BC303E] rounded px-4 py-1 h-max cursor-pointer">
+        <button
+          onClick={() => handleLogout()}
+          className="bg-white border-2 border-[#BC303E] text-[#BC303E] rounded px-4 py-1 h-max cursor-pointer"
+        >
           Logout
         </button>
       </div>

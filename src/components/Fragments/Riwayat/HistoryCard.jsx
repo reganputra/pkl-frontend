@@ -4,7 +4,7 @@ function HistoryCard({ data }) {
       <div className="bg-white text-black flex justify-between py-6 px-10">
         <div className="flex items-center">
           <img
-            src="/assets/images/kecap.jpg"
+            src={data?.kodeBarang?.image}
             alt=""
             className="w-44 object-contain shadow mr-4"
           />
@@ -15,7 +15,7 @@ function HistoryCard({ data }) {
                 Kode Barang :
               </p>
               <p className="text-[20px]/9 font-bold text-black">
-                {data.kodeBarang.kodeBarang}
+                {data?.kodeBarang?.kodeBarang}
               </p>
             </div>
 
@@ -24,7 +24,7 @@ function HistoryCard({ data }) {
                 Nama Barang :
               </p>
               <p className="text-[20px]/9 font-bold text-black">
-                {data.kodeBarang.name}
+                {data?.kodeBarang?.name}
               </p>
             </div>
 
@@ -33,7 +33,7 @@ function HistoryCard({ data }) {
                 Kuantitas :
               </p>
               <p className="text-[20px]/9 font-bold text-black">
-                {data.kodeBarang.quantity}
+                {data?.quantity}
               </p>
             </div>
 
@@ -42,19 +42,19 @@ function HistoryCard({ data }) {
                 Ukuran Kemasan :
               </p>
               <p className="text-[20px]/9 font-bold text-black">
-                {data.kodeBarang.ukuranKemasan}
+                {data?.kodeBarang?.ukuranKemasan}
               </p>
             </div>
           </div>
         </div>
         <div className="w-fit flex flex-col items-end justify-between">
           <p
-            className={`text-[20px]/9 font-bold text-black py-1 px-3 rounded-lg ${data.status == "barang masuk" ? "bg-[#b5e550]" : "bg-[#ff5252]"}`}
+            className={`text-[20px]/9 font-bold text-black py-1 px-3 rounded-lg ${data?.status == "barang masuk" ? "bg-[#b5e550]" : "bg-[#ff5252]"}`}
           >
-            {data.status}
+            {data?.status}
           </p>
           <p className="text-[20px]/9 font-bold text-black">
-            {data.day}-{data.month}-{data.year}
+            {data?.day}-{data?.month}-{data?.year}
           </p>
         </div>
       </div>

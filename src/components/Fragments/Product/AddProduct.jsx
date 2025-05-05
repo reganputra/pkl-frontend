@@ -2,6 +2,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import axiosInstance from "../../../api/axiosinstance";
+import Cookies from "js-cookie";
 
 function AddProduct({ closeAddProduct }) {
   const [preview, setPreview] = useState(null);
@@ -41,6 +42,7 @@ function AddProduct({ closeAddProduct }) {
       const response = await axiosInstance.post("/items", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
+          Authorization: Cookies.get("token"),
         },
       });
 
