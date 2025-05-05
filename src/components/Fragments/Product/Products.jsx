@@ -3,20 +3,20 @@ import ProductDetail from "./ProductDetail";
 import AddProduct from "./AddProduct";
 import axiosInstance from "../../../api/axiosinstance";
 import Cookies from "js-cookie";
+import CustomPagination from "../../Elements/Pagination";
 
 function Products() {
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [products, setProducts] = useState(null);
   const [updateStock, setUpdateStock] = useState(false);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axiosInstance.get("/items", {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: Cookies.get("token"),
-          },
+          headers: { Authorization: Cookies.get("token") },
+          params: { page: page },
         });
         setProducts(response.data);
       } catch (error) {
@@ -36,7 +36,7 @@ function Products() {
         >
           Tambahkan Produk
         </button>
-        {products?.map((product) => (
+        {products?.data?.map((product) => (
           <ProductDetail
             data={product}
             key={product._id}
@@ -44,6 +44,13 @@ function Products() {
           />
         ))}
       </div>
+
+      <CustomPagination
+        current={page}
+        total={products?.totalPages}
+        onChange={(x) => setPage(x)}
+      />
+
       {showAddProduct && (
         <AddProduct closeAddProduct={() => setShowAddProduct(false)} />
       )}
