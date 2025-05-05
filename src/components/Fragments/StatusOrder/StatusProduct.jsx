@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 
 function StatusProduct() {
   const [active, setActive] = useState(1);
+  const [refresh, setRefresh] = useState(false);
 
   const handleCreatePO = async () => {
     try {
@@ -24,6 +25,7 @@ function StatusProduct() {
         }
       );
       alert("PO baru sudah berhasil dibuat !!");
+      setRefresh((prev) => !prev);
     } catch (error) {
       console.log(error.response?.data || error.message);
     }
@@ -68,7 +70,7 @@ function StatusProduct() {
         )}
       </div>
 
-      {active == 1 && <PendingList />}
+      {active == 1 && <PendingList refresh={refresh} />}
       {active == 2 && <SendingList />}
       {active == 3 && <DoneList />}
 

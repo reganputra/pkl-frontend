@@ -1,24 +1,32 @@
 import { useEffect, useState } from "react";
 import PendingCard from "./PendingCard";
-import AddSuratJalan from "./AddSuratJalan";
+import axiosInstance from "../../../api/axiosinstance";
+import Cookies from "js-cookie";
 
-function PendingList() {
-  const [showAddSuratJalan, setShowAddSuratJalan] = useState(false);
-  const [noPo, setNoPo] = useState("");
+function PendingList({ refresh }) {
+  const [pendingData, setPendingData] = useState(null);
 
-  function handleClick(x) {
-    setShowAddSuratJalan(true);
-    setNoPo(x);
-  }
+  useEffect(() => {
+    const fetchSending = async () => {
+      try {
+        const response = await axiosInstance.get("/po/status/pending", {
+          headers: { Authorization: Cookies.get("token") },
+        });
+        setPendingData(response.data);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+    fetchSending();
+  }, [refresh]);
 
   return (
     <>
       <div className="flex flex-col gap-5 bg-[#F5F5F5]">
-        <PendingCard handleClick={(x) => handleClick(x)} />
+        {pendingData?.map((data, index) => (
+          <PendingCard key={index} data={data} />
+        ))}
       </div>
-      {showAddSuratJalan && (
-        <AddSuratJalan closeAddSuratJalan={() => setShowAddSuratJalan(false)} />
-      )}
     </>
   );
 }

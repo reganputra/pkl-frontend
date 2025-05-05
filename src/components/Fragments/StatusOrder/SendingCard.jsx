@@ -1,12 +1,14 @@
 import StatusProductDetail from "../../Elements/StatusProductDetail";
 
-function SendingCard() {
+function SendingCard({ handleClick, data }) {
   return (
     <>
-      <StatusProductDetail>
-        <p className="font-bold text-[#BC303E] text-[21px]/9">Sedang Dikirim</p>
-        <p className="text-[#BC303E] text-[21px]">
-          Estimasi Tiba 59 Jan - 39 Des
+      <StatusProductDetail data={data}>
+        <p
+          className="font-bold text-[#BC303E] text-[21px]/9"
+          onClick={() => handleClick()}
+        >
+          Cek No PO Surat Jalan
         </p>
       </StatusProductDetail>
     </>
