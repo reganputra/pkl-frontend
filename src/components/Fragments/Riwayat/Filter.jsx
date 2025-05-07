@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../../api/axiosinstance";
 import HistoryList from "./HistoryList";
 import Cookies from "js-cookie";
+import CustomPagination from "../../Elements/Pagination";
 
 function Filter() {
   const [history, setHistory] = useState(null);
   const [year, setYear] = useState(2025);
   const [month, setMonth] = useState(1);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchHistory = async () => {
@@ -16,26 +18,23 @@ function Filter() {
             "Content-Type": "multipart/form-data",
             Authorization: Cookies.get("token"),
           },
+          params: { page: page },
         });
-        setHistory(response.data);
+        setHistory(response.data.data);
       } catch (error) {
         console.log(error.response?.data || error.message);
       }
     };
     fetchHistory();
-  }, []);
+  }, [page]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const fetchFilter = async () => {
       try {
         const response = await axiosInstance.get(`/riwayat/${year}/${month}`, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: Cookies.get("token"),
-          },
+          headers: { Authorization: Cookies.get("token") },
         });
-        console.log(response.data);
         setHistory(response.data);
       } catch (error) {
         console.log(error.response?.data || error.message);
@@ -92,6 +91,12 @@ function Filter() {
       </form>
 
       {history && <HistoryList data={history} />}
+
+      <CustomPagination
+        current={page}
+        total={history?.totalPages}
+        onChange={(x) => setPage(x)}
+      />
 
       <div className="bg-[#F5F5F5] pt-20"></div>
     </>

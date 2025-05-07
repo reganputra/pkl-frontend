@@ -4,7 +4,7 @@ function HistoryCard({ data }) {
       <div className="bg-white text-black flex justify-between py-6 px-10">
         <div className="flex items-center">
           <img
-            src={data?.kodeBarang?.image}
+            src={data?.image}
             alt=""
             className="w-44 object-contain shadow mr-4"
           />
@@ -15,7 +15,7 @@ function HistoryCard({ data }) {
                 Kode Barang :
               </p>
               <p className="text-[20px]/9 font-bold text-black">
-                {data?.kodeBarang?.kodeBarang}
+                {data?.kodeBarang}
               </p>
             </div>
 
@@ -23,9 +23,7 @@ function HistoryCard({ data }) {
               <p className="text-[20px]/9 font-bold text-black w-45">
                 Nama Barang :
               </p>
-              <p className="text-[20px]/9 font-bold text-black">
-                {data?.kodeBarang?.name}
-              </p>
+              <p className="text-[20px]/9 font-bold text-black">{data?.name}</p>
             </div>
 
             <div className="flex">
@@ -42,7 +40,7 @@ function HistoryCard({ data }) {
                 Ukuran Kemasan :
               </p>
               <p className="text-[20px]/9 font-bold text-black">
-                {data?.kodeBarang?.ukuranKemasan}
+                {data?.ukuranKemasan}
               </p>
             </div>
           </div>

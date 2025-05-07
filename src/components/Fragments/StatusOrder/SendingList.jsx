@@ -25,11 +25,11 @@ function SendingList() {
   return (
     <>
       <div className="flex flex-col gap-5 bg-[#F5F5F5]">
-        {sendingData?.map((data, index) => (
+        {sendingData?.data?.map((data, index) => (
           <SendingCard
             key={index}
             data={data}
-            handleClick={() => setShowAddSuratJalan(false)}
+            handleClick={() => setShowAddSuratJalan(true)}
           />
         ))}
       </div>
