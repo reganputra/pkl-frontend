@@ -22,7 +22,7 @@ function DoneList({ data }) {
 
   return (
     <div className="flex flex-col gap-5 bg-[#F5F5F5]">
-      {doneData?.map((data, index) => (
+      {doneData?.data?.map((data, index) => (
         <DoneCard key={index} data={data} />
       ))}
     </div>

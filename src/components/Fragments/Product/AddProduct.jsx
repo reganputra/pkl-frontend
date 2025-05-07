@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import axiosInstance from "../../../api/axiosinstance";
 import Cookies from "js-cookie";
 
-function AddProduct({ closeAddProduct }) {
+function AddProduct({ closeAddProduct, refresh }) {
   const [preview, setPreview] = useState(null);
   const fileInputRef = useRef();
   const [formValue, setFormValue] = useState({
@@ -59,8 +59,15 @@ function AddProduct({ closeAddProduct }) {
       setSelectedImage(null);
       setPreview(null);
       closeAddProduct();
+      refresh();
     } catch (error) {
       console.log(error.response?.data || error.message);
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
     }
   };
 
@@ -75,6 +82,7 @@ function AddProduct({ closeAddProduct }) {
         action=""
         method="post"
         onSubmit={handleSubmit}
+        onKeyDown={handleKeyDown}
         className="relative flex flex-col bg-white justify-center items-center text-black border gap-3 w-4/5 p-8 rounded"
         onClick={(e) => e.stopPropagation()}
       >

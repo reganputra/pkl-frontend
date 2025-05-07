@@ -20,7 +20,7 @@ function Filter() {
           },
           params: { page: page },
         });
-        setHistory(response.data);
+        setHistory(response.data.data);
       } catch (error) {
         console.log(error.response?.data || error.message);
       }
@@ -90,7 +90,7 @@ function Filter() {
         </button>
       </form>
 
-      {history && <HistoryList data={history.data} />}
+      {history && <HistoryList data={history} />}
 
       <CustomPagination
         current={page}

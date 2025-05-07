@@ -52,7 +52,10 @@ function Products() {
       />
 
       {showAddProduct && (
-        <AddProduct closeAddProduct={() => setShowAddProduct(false)} />
+        <AddProduct
+          closeAddProduct={() => setShowAddProduct(false)}
+          refresh={() => setUpdateStock(!updateStock)}
+        />
       )}
     </>
   );

@@ -1,7 +1,40 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import axiosInstance from "../../../api/axiosinstance";
+import Cookies from "js-cookie";
 
 function AddSuratJalan({ closeAddSuratJalan }) {
+  const [suratJalan, setSuratJalan] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axiosInstance.post(
+        "/surat-jalan",
+        { noSuratJalan: suratJalan },
+        {
+          headers: {
+            Authorization: Cookies.get("token"),
+          },
+        }
+      );
+      console.log(suratJalan);
+      console.log(response);
+      alert("Barang sudah dikirim !!");
+      closeAddSuratJalan();
+    } catch (error) {
+      console.log(error.response?.data || error.message);
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  };
+
   return (
     <div className="fixed inset-0 flex justify-center items-center">
       <div
@@ -12,6 +45,8 @@ function AddSuratJalan({ closeAddSuratJalan }) {
       <form
         action=""
         method="post"
+        onSubmit={handleSubmit}
+        onKeyDown={handleKeyDown}
         className="relative flex flex-col bg-white justify-center items-center text-black border gap-3 w-fit p-8 rounded"
         onClick={(e) => e.stopPropagation()}
       >
@@ -24,6 +59,7 @@ function AddSuratJalan({ closeAddSuratJalan }) {
         <input
           type="text"
           name="SJalan"
+          onChange={(e) => setSuratJalan(e.target.value)}
           className="border-2 rounded-lg p-1 w-96 text-center"
         />
         <input
