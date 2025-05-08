@@ -15,14 +15,14 @@ function StatusProduct() {
   const handleCreatePO = async () => {
     try {
       const token = Cookies.get("token");
-      const response = await axiosInstance.post(
-        "/po",
-        {},
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
+      await axiosInstance.post(
+          "/po",
+          {},
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
       );
       alert("PO baru sudah berhasil dibuat !!");
       setRefresh((prev) => !prev);
