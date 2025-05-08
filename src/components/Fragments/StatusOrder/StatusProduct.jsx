@@ -1,7 +1,7 @@
 import { useState } from "react";
-import BoxIcon from "../../Elements/Icons/box";
-import CheckIcon from "../../Elements/Icons/check";
-import TruckIcon from "../../Elements/Icons/truck";
+import BoxIcon from "../../Elements/Icons/Box.jsx";
+import CheckIcon from "../../Elements/Icons/Check.jsx";
+import TruckIcon from "../../Elements/Icons/Truck.jsx";
 import PendingList from "./PendingList";
 import SendingList from "./SendingList";
 import DoneList from "./DoneList";
