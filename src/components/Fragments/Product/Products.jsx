@@ -28,10 +28,12 @@ function Products() {
 
   return (
     <>
-      <div className="flex justify-center items-center w-screen gap-8 py-28 flex-col bg-white text-[#BC303E]">
-        <h1 className="font-bold text-5xl">Manajemen Produk</h1>
+      <div className="flex w-screen flex-col items-center justify-center gap-8 bg-white py-14 text-[#BC303E] lg:py-28">
+        <h1 className="text-center text-5xl font-bold lg:text-left">
+          Manajemen Produk
+        </h1>
         <button
-          className="bg-[#BC303E] text-white rounded-xl px-12 py-2 font-bold mb-9 text-[20px]"
+          className="mb-9 rounded-xl bg-[#BC303E] px-12 py-2 text-[20px] font-bold text-white"
           onClick={() => setShowAddProduct(true)}
         >
           Tambahkan Produk

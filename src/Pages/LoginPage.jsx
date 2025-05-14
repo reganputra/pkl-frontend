@@ -3,17 +3,17 @@ import Login from "../components/Fragments/Login/FormLogin";
 function LoginPage() {
   return (
     <>
-      <div className="flex justify-end items-center w-screen">
+      <div className="flex w-screen items-center justify-end">
         <img
           src="/assets/images/bgLogin.png"
           alt=""
-          className="h-screen flex-2"
+          className="hidden h-screen flex-2 lg:block"
         />
-        <div className="flex justify-center items-center flex-1 relative h-screen">
+        <div className="relative flex h-screen flex-1 items-center justify-center">
           <img
             src="/assets/images/bgForm.png"
             alt=""
-            className="h-screen w-full top-0 left-0 absolute"
+            className="absolute top-0 left-0 h-screen w-full"
           />
           <Login />
         </div>

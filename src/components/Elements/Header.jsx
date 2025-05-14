@@ -9,13 +9,13 @@ function Header({ active }) {
   }
   return (
     <>
-      <div className="flex z-10 justify-between items-center w-screen py-3 px-10 h-18 bg-[#FFCF45] absolute top-0 rounded-b-3xl">
+      <div className="fixed bottom-0 z-10 flex h-30 w-screen items-center justify-between rounded-b-3xl border-t-2 bg-[#FFCF45] px-3 py-3 lg:top-0 lg:h-18 lg:border-none lg:px-10">
         <img
           src="/assets/images/LogoPerusahaan.png"
           alt="logo perusahaan"
-          className="w-30"
+          className="hidden w-30 lg:block"
         />
-        <div className="flex justify-evenly items-center w-full text-black font-bold">
+        <div className="flex w-full items-center justify-evenly font-bold text-black">
           <Link to="/home" className={active == 1 ? "text-[#BC303E]" : ""}>
             Produk
           </Link>
@@ -25,10 +25,16 @@ function Header({ active }) {
           <Link to="/riwayat" className={active == 3 ? "text-[#BC303E]" : ""}>
             Riwayat
           </Link>
+          <button
+            onClick={() => handleLogout()}
+            className="block h-max cursor-pointer rounded border-2 border-[#BC303E] bg-white px-4 py-1 text-[#BC303E] lg:hidden"
+          >
+            Logout
+          </button>
         </div>
         <button
           onClick={() => handleLogout()}
-          className="bg-white border-2 border-[#BC303E] text-[#BC303E] rounded px-4 py-1 h-max cursor-pointer"
+          className="hidden h-max cursor-pointer rounded border-2 border-[#BC303E] bg-white px-4 py-1 text-[#BC303E] lg:block"
         >
           Logout
         </button>

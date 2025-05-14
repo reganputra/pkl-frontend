@@ -30,11 +30,11 @@ function Login() {
       <form
         method="post"
         onSubmit={handleLogin}
-        className="bg-white rounded-lg text-black p-6 flex flex-col h-fit justify-center items-center gap-3 z-1"
+        className="z-1 flex h-fit flex-col items-center justify-center gap-3 rounded-lg bg-white p-6 text-black"
       >
         <h2 className="text-2xl font-bold">Login Akun</h2>
 
-        <div className="flex-col flex">
+        <div className="flex flex-col">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -44,7 +44,7 @@ function Login() {
             }}
             value={email}
             id=""
-            className="border-2 rounded-lg w-64 h-10 px-2"
+            className="h-10 w-64 rounded-lg border-2 px-2"
           />
         </div>
 
@@ -58,13 +58,13 @@ function Login() {
             }}
             value={password}
             id=""
-            className="border-2 rounded-lg w-64 h-10 px-2"
+            className="h-10 w-64 rounded-lg border-2 px-2"
           />
         </div>
 
         <button
           type="submit"
-          className="bg-[#FFCF45] rounded-md py-2 w-full text-center mt-4"
+          className="mt-4 w-full rounded-md bg-[#FFCF45] py-2 text-center"
         >
           Login
         </button>
