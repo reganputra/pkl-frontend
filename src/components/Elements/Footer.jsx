@@ -1,21 +1,21 @@
 function Footer() {
   return (
     <>
-      <div className="flex w-screen flex-col items-center bg-[#FFCF45] pb-30 text-black">
-        <div className="flex flex-col items-center justify-center gap-10 px-5 py-16 lg:flex-row lg:px-0">
+      <div className="flex w-screen flex-col items-center bg-[#FFCF45] pb-30 text-black md:pb-0">
+        <div className="flex flex-col items-center justify-center gap-10 px-5 py-16 md:flex-row md:px-0">
           <img
             src="/assets/images/LogoPerusahaan.png"
             alt="logo perusahaan"
             className="w-60 object-contain"
           />
-          <p className="lg:w-110">
+          <p className="md:w-110">
             PT. Anugerah Prima Manunggal merupakan anak perusahaan dari PT
             Lombok Gandaria yang dimana memproduksi kecap manis, kecap asin,
             saus cabai, saus tomat dan cuka makanan. PT. Anugerah Prima
             Manunggal bergerak di bidang distribusi area indonesia timur yang
             memasarkan produk Logan Food atau PT. Lombok Gandaria.
           </p>
-          <div className="flex gap-5 lg:gap-10">
+          <div className="flex gap-5 md:gap-10">
             <div>
               <ul>
                 <li className="font-bold text-nowrap">Tautan Cepat</li>

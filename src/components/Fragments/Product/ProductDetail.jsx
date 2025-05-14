@@ -57,23 +57,23 @@ function ProductDetail({ data, onUpdateStock }) {
 
   return (
     <>
-      <div className="flex w-9/12 flex-col items-center justify-around gap-3 overflow-hidden rounded border bg-white p-6 px-7 text-black lg:flex-row lg:gap-0">
-        <div className="flex w-full flex-col items-center justify-center gap-3 lg:w-auto lg:flex-row lg:gap-0">
+      <div className="flex w-9/12 flex-col items-center justify-around gap-3 overflow-hidden rounded border bg-white p-6 px-7 text-black md:flex-row md:gap-0">
+        <div className="flex w-full flex-col items-center justify-center gap-3 md:w-auto md:flex-row md:gap-0">
           <img
             src={data.image}
             alt=""
-            className="w-60 object-contain shadow lg:mr-4 lg:w-44"
+            className="w-60 object-contain shadow md:mr-4 md:w-44"
           />
-          <div className="flex w-full flex-col font-bold lg:w-auto">
-            <p className="text-[25px]/9 lg:w-80">{data.name}</p>
-            <p className="text-[18px] lg:text-[16px]">
+          <div className="flex w-full flex-col font-bold md:w-auto">
+            <p className="text-[25px]/9 md:w-80">{data.name}</p>
+            <p className="text-[18px] md:text-[16px]">
               {data.ukuranKemasan} ML
             </p>
             <p className="text-[18px] text-[#BC303E]">{data.kodeBarang}</p>
           </div>
         </div>
 
-        <div className="justify-centers flex flex-col items-center gap-3 lg:items-end">
+        <div className="justify-centers flex flex-col items-center gap-3 md:items-end">
           <div className="flex flex-col items-center justify-center gap-1">
             <p className="text-[20px] text-[#BC303E]">
               Stock : {data.quantity}
@@ -98,14 +98,14 @@ function ProductDetail({ data, onUpdateStock }) {
             <FontAwesomeIcon
               icon={faTrashCan}
               onClick={() => setShowDeleteConfirm(true)}
-              className="!h-6 cursor-pointer rounded border-2 border-[#BC303E] p-1 text-[#BC303E] lg:!h-7.5"
+              className="!h-6 cursor-pointer rounded border-2 border-[#BC303E] p-1 text-[#BC303E] md:!h-7.5"
             />
-            <button className="rounded border-2 border-[#BC303E] bg-white px-3 py-1 whitespace-nowrap text-[#BC303E] lg:text-[20px]">
+            <button className="rounded border-2 border-[#BC303E] bg-white px-3 py-1 whitespace-nowrap text-[#BC303E] md:text-[20px]">
               Edit Produk
             </button>
             <button
               onClick={handleUpdateStock}
-              className="rounded border-2 border-[#BC303E] bg-[#BC303E] px-3 py-1 whitespace-nowrap text-white lg:text-[20px]"
+              className="rounded border-2 border-[#BC303E] bg-[#BC303E] px-3 py-1 whitespace-nowrap text-white md:text-[20px]"
             >
               Update Stock
             </button>

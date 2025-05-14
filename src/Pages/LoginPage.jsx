@@ -7,7 +7,7 @@ function LoginPage() {
         <img
           src="/assets/images/bgLogin.png"
           alt=""
-          className="hidden h-screen flex-2 lg:block"
+          className="hidden h-screen flex-2 md:block"
         />
         <div className="relative flex h-screen flex-1 items-center justify-center">
           <img

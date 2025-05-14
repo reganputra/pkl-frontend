@@ -28,8 +28,8 @@ function Products() {
 
   return (
     <>
-      <div className="flex w-screen flex-col items-center justify-center gap-8 bg-white py-14 text-[#BC303E] lg:py-28">
-        <h1 className="text-center text-5xl font-bold lg:text-left">
+      <div className="flex w-screen flex-col items-center justify-center gap-8 bg-white py-14 text-[#BC303E] md:py-28">
+        <h1 className="text-center text-5xl font-bold md:text-left">
           Manajemen Produk
         </h1>
         <button
