@@ -10,7 +10,7 @@ function PendingCard({ data, refresh }) {
         {},
         {
           headers: { Authorization: Cookies.get("token") },
-        }
+        },
       );
       refresh();
     } catch (error) {
@@ -21,12 +21,12 @@ function PendingCard({ data, refresh }) {
   return (
     <>
       <StatusProductDetail data={data}>
-        <p className="font-bold text-[#BC303E] text-[21px]/9">
+        <p className="text-[21px]/9 font-bold text-[#BC303E]">
           Menunggu Konfirmasi
         </p>
         <button
           onClick={() => handleClick()}
-          className="bg-[#BC303E] text-white px-5 py-2 rounded-lg font-bold"
+          className="rounded-lg bg-[#BC303E] px-5 py-2 font-bold text-white"
         >
           Kirim
         </button>

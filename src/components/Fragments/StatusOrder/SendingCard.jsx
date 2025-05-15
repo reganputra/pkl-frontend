@@ -5,7 +5,7 @@ function SendingCard({ handleClick, data }) {
     <>
       <StatusProductDetail data={data}>
         <p
-          className="font-bold text-[#BC303E] text-[21px]/9"
+          className="text-[21px]/9 font-bold text-[#BC303E]"
           onClick={() => handleClick()}
         >
           Cek No PO Surat Jalan
