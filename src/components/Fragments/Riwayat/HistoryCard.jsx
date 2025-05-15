@@ -42,7 +42,7 @@ function HistoryCard({ data }) {
                 Ukuran Kemasan :
               </p>
               <p className="w-1/2 text-[20px]/9 font-bold text-black md:w-auto">
-                {data?.ukuranKemasan}
+                {data?.ukuranKemasan} ML
               </p>
             </div>
           </div>

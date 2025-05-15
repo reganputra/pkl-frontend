@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function CustomPagination({ current, total, onChange }) {
   return (
     <>
-      <div className="flex items-center justify-center gap-10 bg-[#F5F5F5] py-7">
+      <div className="flex w-screen items-center justify-center gap-10 bg-[#F5F5F5] py-7">
         <FontAwesomeIcon
           icon={faCaretLeft}
           onClick={() => {

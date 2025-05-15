@@ -51,7 +51,7 @@ function Filter() {
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center gap-5 bg-[#F5F5F5] py-10 md:flex-row"
       >
-        <div className="flex gap-5">
+        <div className="flex flex-wrap justify-center gap-5">
           <select
             name="month"
             id="month"

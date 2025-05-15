@@ -16,13 +16,13 @@ function StatusProduct() {
     try {
       const token = Cookies.get("token");
       await axiosInstance.post(
-          "/po",
-          {},
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
+        "/po",
+        {},
+        {
+          headers: {
+            Authorization: token,
+          },
+        },
       );
       alert("PO baru sudah berhasil dibuat !!");
       setRefresh((prev) => !prev);
@@ -36,26 +36,35 @@ function StatusProduct() {
       <div
         className={`relative flex w-screen flex-col bg-[#F5F5F5] md:w-auto md:items-end md:pt-30 ${active != 1 && "pb-13"}`}
       >
-        <div className="flex w-screen justify-center gap-20 bg-white py-4 text-black">
+        <div className="flex w-screen justify-evenly bg-white py-4 text-black md:justify-center md:gap-20">
           <div
             className="flex flex-col items-center"
             onClick={() => setActive(1)}
           >
-            <BoxIcon color={active == 1 ? "red" : "black"} size={"size-12"} />
+            <BoxIcon
+              color={active == 1 ? "red" : "black"}
+              size={"size-[10vw] md:size-12"}
+            />
             <p>Pending</p>
           </div>
           <div
             className="flex flex-col items-center"
             onClick={() => setActive(2)}
           >
-            <TruckIcon color={active == 2 ? "red" : "black"} size={"size-12"} />
+            <TruckIcon
+              color={active == 2 ? "red" : "black"}
+              size={"size-[10vw] md:size-12"}
+            />
             <p>Dikirim</p>
           </div>
           <div
             className="flex flex-col items-center"
             onClick={() => setActive(3)}
           >
-            <CheckIcon color={active == 3 ? "red" : "black"} size={"size-12"} />
+            <CheckIcon
+              color={active == 3 ? "red" : "black"}
+              size={"size-[10vw] md:size-12"}
+            />
             <p>Selesai</p>
           </div>
         </div>

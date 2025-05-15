@@ -39,6 +39,8 @@ function AddProduct({ closeAddProduct, refresh }) {
     });
 
     try {
+      closeAddProduct();
+      alert("Mohon ditunggu, produk sedang ditambahkan");
       const response = await axiosInstance.post("/items", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -58,9 +60,9 @@ function AddProduct({ closeAddProduct, refresh }) {
       });
       setSelectedImage(null);
       setPreview(null);
-      closeAddProduct();
       refresh();
     } catch (error) {
+      alert("Produk gagal ditambahkan");
       console.log(error.response?.data || error.message);
     }
   };
@@ -102,16 +104,16 @@ function AddProduct({ closeAddProduct, refresh }) {
 
         <div
           onClick={triggerFileInput}
-          className="flex max-h-20 min-h-5 min-w-5 cursor-pointer items-center justify-center rounded border-2 md:max-h-40 md:min-h-20 md:min-w-20"
+          className="flex cursor-pointer items-center justify-center rounded border-2"
         >
           {preview ? (
             <img
               src={preview}
               alt="Preview"
-              className="h-full w-full rounded object-cover"
+              className="h-20 w-full rounded object-cover md:h-30"
             />
           ) : (
-            <span>+</span>
+            <span className="px-7 py-5">+</span>
           )}
         </div>
 
@@ -198,7 +200,7 @@ function AddProduct({ closeAddProduct, refresh }) {
             Ukuran
           </label>
           <input
-            type="text"
+            type="number"
             name="ukuranKemasan"
             id="ukuranKemasan"
             onChange={(e) =>
