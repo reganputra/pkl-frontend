@@ -3,16 +3,19 @@ import SendingCard from "./SendingCard";
 import AddSuratJalan from "./AddSuratJalan";
 import axiosInstance from "../../../api/axiosinstance";
 import Cookies from "js-cookie";
+import CustomPagination from "../../Elements/Pagination";
 
 function SendingList() {
   const [showAddSuratJalan, setShowAddSuratJalan] = useState(false);
   const [sendingData, setSendingData] = useState(null);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchSending = async () => {
       try {
         const response = await axiosInstance.get("/po/status/sending", {
           headers: { Authorization: Cookies.get("token") },
+          params: { page: page },
         });
         setSendingData(response.data);
       } catch (error) {
@@ -20,7 +23,7 @@ function SendingList() {
       }
     };
     fetchSending();
-  }, []);
+  }, [page]);
 
   return (
     <>
@@ -33,6 +36,13 @@ function SendingList() {
           />
         ))}
       </div>
+
+      <CustomPagination
+        current={page}
+        total={sendingData?.totalPages}
+        onChange={(x) => setPage(x)}
+      />
+
       {showAddSuratJalan && (
         <AddSuratJalan closeAddSuratJalan={() => setShowAddSuratJalan(false)} />
       )}

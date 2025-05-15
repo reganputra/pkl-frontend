@@ -4,7 +4,7 @@ function DoneCard({ data }) {
   return (
     <>
       <StatusProductDetail data={data}>
-        <p className="font-bold text-[#BC303E] text-[21px]/9">Terkirim</p>
+        <p className="text-[21px]/9 font-bold text-[#BC303E]">Terkirim</p>
       </StatusProductDetail>
     </>
   );
