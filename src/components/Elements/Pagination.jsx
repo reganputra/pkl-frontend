@@ -27,10 +27,8 @@ function CustomPagination({ current, total, onChange }) {
           onClick={() => {
             if (current < total) {
               onChange(current + 1);
-              window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top
+              window.scrollTo({ top: 0, behavior: "smooth" });
             }
-            console.log(current);
-            console.log(total);
           }}
           className={`rounded-lg px-4 py-2 font-bold ${
             current >= total

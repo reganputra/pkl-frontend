@@ -22,7 +22,7 @@ function StatusProduct() {
           headers: {
             Authorization: token,
           },
-        }
+        },
       );
       alert("PO baru sudah berhasil dibuat !!");
       setRefresh((prev) => !prev);
@@ -34,9 +34,9 @@ function StatusProduct() {
   return (
     <>
       <div
-        className={`bg-[#F5F5F5] pt-30 relative flex-col flex items-end ${active != 1 && "pb-13"}`}
+        className={`relative flex w-screen flex-col bg-[#F5F5F5] lg:w-auto lg:items-end lg:pt-30 ${active != 1 && "pb-13"}`}
       >
-        <div className="flex justify-center gap-20 py-4 text-black bg-white w-screen">
+        <div className="flex w-screen justify-center gap-20 bg-white py-4 text-black">
           <div
             className="flex flex-col items-center"
             onClick={() => setActive(1)}
@@ -63,7 +63,7 @@ function StatusProduct() {
         {active == 1 && (
           <button
             onClick={handleCreatePO}
-            className="bg-[#BC303E] rounded-2xl py-2 px-20 font-bold text-2xl w-fit my-5 mr-10"
+            className="m-5 w-fit place-self-end rounded-2xl bg-[#BC303E] px-14 py-1.5 text-2xl font-bold lg:my-5 lg:mr-10 lg:place-self-auto lg:px-20 lg:py-2"
           >
             Buat PO
           </button>
@@ -74,7 +74,7 @@ function StatusProduct() {
       {active == 2 && <SendingList />}
       {active == 3 && <DoneList />}
 
-      <div className="bg-[#F5F5F5] pt-20"></div>
+      <div className="hidden bg-[#F5F5F5] pt-20 lg:block"></div>
     </>
   );
 }

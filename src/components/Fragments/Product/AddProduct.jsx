@@ -72,7 +72,7 @@ function AddProduct({ closeAddProduct, refresh }) {
   };
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center z-20">
+    <div className="fixed inset-0 z-20 flex items-center justify-center">
       <div
         className="absolute inset-0 bg-black/40"
         onClick={() => closeAddProduct()}
@@ -83,12 +83,12 @@ function AddProduct({ closeAddProduct, refresh }) {
         method="post"
         onSubmit={handleSubmit}
         onKeyDown={handleKeyDown}
-        className="relative flex flex-col bg-white justify-center items-center text-black border gap-3 w-4/5 p-8 rounded"
+        className="relative flex w-4/5 flex-col items-center justify-center gap-0 rounded border bg-white p-4 text-black lg:gap-3 lg:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         <FontAwesomeIcon
           icon={faXmark}
-          className="flex self-end !h-6 cursor-pointer"
+          className="flex !h-6 cursor-pointer self-end"
           onClick={() => closeAddProduct()}
         />
 
@@ -102,23 +102,23 @@ function AddProduct({ closeAddProduct, refresh }) {
 
         <div
           onClick={triggerFileInput}
-          className="max-h-40 min-w-20 min-h-20 rounded border-2 cursor-pointer flex items-center justify-center"
+          className="flex max-h-20 min-h-15 min-w-15 cursor-pointer items-center justify-center rounded border-2 lg:max-h-40 lg:min-h-20 lg:min-w-20"
         >
           {preview ? (
             <img
               src={preview}
               alt="Preview"
-              className="w-full h-full object-cover rounded"
+              className="h-full w-full rounded object-cover"
             />
           ) : (
             <span>+</span>
           )}
         </div>
 
-        <div className="flex gap-3">
-          <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-0 lg:flex-row lg:gap-3">
+          <div className="flex flex-col gap-0 lg:gap-3">
             <div className="flex flex-col gap-1">
-              <label className="text-[#BC303E] font-bold" htmlFor="NamaProduk">
+              <label className="font-bold text-[#BC303E]" htmlFor="NamaProduk">
                 Nama Produk
               </label>
               <input
@@ -131,12 +131,12 @@ function AddProduct({ closeAddProduct, refresh }) {
                     [e.target.name]: e.target.value,
                   }))
                 }
-                className="border-2 rounded-lg w-96 h-10 px-2 border-black"
+                className="h-9 w-60 rounded-lg border-2 border-black px-2 lg:h-10 lg:w-96"
               />
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className="text-[#BC303E] font-bold" htmlFor="KodeBarang">
+              <label className="font-bold text-[#BC303E]" htmlFor="KodeBarang">
                 Kode Barang
               </label>
               <input
@@ -149,14 +149,14 @@ function AddProduct({ closeAddProduct, refresh }) {
                     [e.target.name]: e.target.value,
                   }))
                 }
-                className="border-2 rounded-lg w-96 h-10 px-2 border-black"
+                className="h-9 w-60 rounded-lg border-2 border-black px-2 lg:h-10 lg:w-96"
               />
             </div>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-0 lg:gap-3">
             <div className="flex flex-col gap-1">
-              <label className="text-[#BC303E] font-bold" htmlFor="Kuantitas">
+              <label className="font-bold text-[#BC303E]" htmlFor="Kuantitas">
                 Kuantitas
               </label>
               <input
@@ -169,12 +169,12 @@ function AddProduct({ closeAddProduct, refresh }) {
                     [e.target.name]: e.target.value,
                   }))
                 }
-                className="border-2 rounded-lg w-96 h-10 px-2 border-black"
+                className="h-9 w-60 rounded-lg border-2 border-black px-2 lg:h-10 lg:w-96"
               />
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className="text-[#BC303E] font-bold" htmlFor="Kategori">
+              <label className="font-bold text-[#BC303E]" htmlFor="Kategori">
                 Kategori
               </label>
               <input
@@ -187,14 +187,14 @@ function AddProduct({ closeAddProduct, refresh }) {
                     [e.target.name]: e.target.value,
                   }))
                 }
-                className="border-2 rounded-lg w-96 h-10 px-2 border-black"
+                className="h-9 w-60 rounded-lg border-2 border-black px-2 lg:h-10 lg:w-96"
               />
             </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-1">
-          <label className="text-[#BC303E] font-bold" htmlFor="Ukuran">
+          <label className="font-bold text-[#BC303E]" htmlFor="Ukuran">
             Ukuran
           </label>
           <input
@@ -207,13 +207,13 @@ function AddProduct({ closeAddProduct, refresh }) {
                 [e.target.name]: e.target.value,
               }))
             }
-            className="border-2 rounded-lg w-96 h-10 px-2 border-black"
+            className="h-9 w-60 rounded-lg border-2 border-black px-2 lg:h-10 lg:w-96"
           />
         </div>
         <button
           type="submit"
           disabled={!selectedImage || !formValue.name}
-          className="bg-[#BC303E] text-white rounded px-12 py-2 font-bold mt-4 disabled:opacity-50"
+          className="mt-4 rounded bg-[#BC303E] px-12 py-2 font-bold text-white disabled:opacity-50"
         >
           Tambahkan
         </button>

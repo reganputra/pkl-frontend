@@ -18,7 +18,7 @@ function AddSuratJalan({ closeAddSuratJalan }) {
           headers: {
             Authorization: Cookies.get("token"),
           },
-        }
+        },
       );
       console.log(suratJalan);
       console.log(response);
@@ -36,7 +36,7 @@ function AddSuratJalan({ closeAddSuratJalan }) {
   };
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center">
+    <div className="fixed inset-0 z-20 flex items-center justify-center">
       <div
         className="absolute inset-0 bg-black/40"
         onClick={() => closeAddSuratJalan()}
@@ -47,25 +47,25 @@ function AddSuratJalan({ closeAddSuratJalan }) {
         method="post"
         onSubmit={handleSubmit}
         onKeyDown={handleKeyDown}
-        className="relative flex flex-col bg-white justify-center items-center text-black border gap-3 w-fit p-8 rounded"
+        className="relative flex w-fit flex-col items-center justify-center gap-3 rounded border bg-white p-8 text-black"
         onClick={(e) => e.stopPropagation()}
       >
         <FontAwesomeIcon
           icon={faXmark}
-          className="flex self-end !h-6 cursor-pointer"
+          className="flex !h-6 cursor-pointer self-end"
           onClick={() => closeAddSuratJalan()}
         />
-        <p className="text-[#BC303E] text-3xl font-bold">No Surat Jalan</p>
+        <p className="text-3xl font-bold text-[#BC303E]">No Surat Jalan</p>
         <input
           type="text"
           name="SJalan"
           onChange={(e) => setSuratJalan(e.target.value)}
-          className="border-2 rounded-lg p-1 w-96 text-center"
+          className="w-70 rounded-lg border-2 p-1 text-center lg:w-96"
         />
         <input
           type="submit"
           value="Verifikasi"
-          className="bg-[#BC303E] text-white rounded px-10 py-2 font-bold mt-4"
+          className="mt-4 rounded bg-[#BC303E] px-10 py-2 font-bold text-white"
         />
       </form>
     </div>

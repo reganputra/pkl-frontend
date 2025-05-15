@@ -9,7 +9,7 @@ function Header({ active }) {
   }
   return (
     <>
-      <div className="fixed bottom-0 z-10 flex h-30 w-screen items-center justify-between rounded-b-3xl border-t-2 bg-[#FFCF45] px-3 py-3 md:top-0 md:h-18 md:border-none md:px-10">
+      <div className="fixed bottom-0 z-10 flex h-20 w-screen items-center justify-between rounded-t-3xl border-t-2 bg-[#FFCF45] px-3 py-3 md:top-0 md:h-18 md:border-none md:px-10 lg:rounded-b-3xl">
         <img
           src="/assets/images/LogoPerusahaan.png"
           alt="logo perusahaan"
