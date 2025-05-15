@@ -6,7 +6,7 @@ function DeleteConfirm({ closeDeleteConfirm, confirm, cancel }) {
         onClick={() => closeDeleteConfirm()}
       ></div>
 
-      <div className="z-30 w-100 rounded-lg border bg-white px-5 py-10">
+      <div className="z-30 w-80 rounded-lg border bg-white px-5 py-10 md:w-100">
         <p className="text-center text-2xl font-bold text-black">
           Apakah kamu yakin mau menghapus produk ini?
         </p>

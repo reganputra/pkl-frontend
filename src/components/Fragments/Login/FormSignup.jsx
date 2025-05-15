@@ -1,11 +1,12 @@
 import { useState } from "react";
 import axiosInstance from "../../../api/axiosinstance";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -17,6 +18,7 @@ function Signup() {
       });
 
       alert("Akun telah dibuat, silahkan melakukan login");
+      navigate("/");
     } catch (error) {
       alert(error.response?.data.message);
       console.log(error.response?.data || error.message);

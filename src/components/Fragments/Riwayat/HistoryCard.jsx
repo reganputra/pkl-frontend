@@ -9,7 +9,7 @@ function HistoryCard({ data }) {
             className="mr-4 w-65 object-contain shadow md:w-44"
           />
 
-          <div className="w-full">
+          <div className="w-full overflow-scroll">
             <div className="flex">
               <p className="w-45 text-[20px]/9 font-bold text-black">
                 Kode Barang :

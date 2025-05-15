@@ -94,18 +94,18 @@ function ProductDetail({ data, onUpdateStock }) {
               />
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <FontAwesomeIcon
               icon={faTrashCan}
               onClick={() => setShowDeleteConfirm(true)}
-              className="!h-6 cursor-pointer rounded border-2 border-[#BC303E] p-1 text-[#BC303E] md:!h-7.5"
+              className="!h-[4.5vw] cursor-pointer rounded border-2 border-[#BC303E] p-1 text-[#BC303E] md:!h-7.5"
             />
-            <button className="rounded border-2 border-[#BC303E] bg-white px-3 py-1 whitespace-nowrap text-[#BC303E] md:text-[20px]">
+            <button className="rounded border-2 border-[#BC303E] bg-white px-3 py-1 text-[3vw] whitespace-nowrap text-[#BC303E] md:text-[20px]">
               Edit Produk
             </button>
             <button
               onClick={handleUpdateStock}
-              className="rounded border-2 border-[#BC303E] bg-[#BC303E] px-3 py-1 whitespace-nowrap text-white md:text-[20px]"
+              className="rounded border-2 border-[#BC303E] bg-[#BC303E] px-3 py-1 text-[3vw] whitespace-nowrap text-white md:text-[20px]"
             >
               Update Stock
             </button>
