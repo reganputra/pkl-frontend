@@ -83,7 +83,7 @@ function AddProduct({ closeAddProduct, refresh }) {
         method="post"
         onSubmit={handleSubmit}
         onKeyDown={handleKeyDown}
-        className="relative flex w-4/5 flex-col items-center justify-center gap-0 rounded border bg-white p-4 text-black lg:gap-3 lg:p-8"
+        className="relative flex w-4/5 flex-col items-center justify-center gap-0 rounded border bg-white p-4 text-black md:gap-3 md:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         <FontAwesomeIcon
@@ -102,7 +102,7 @@ function AddProduct({ closeAddProduct, refresh }) {
 
         <div
           onClick={triggerFileInput}
-          className="flex max-h-20 min-h-15 min-w-15 cursor-pointer items-center justify-center rounded border-2 lg:max-h-40 lg:min-h-20 lg:min-w-20"
+          className="flex max-h-20 min-h-15 min-w-15 cursor-pointer items-center justify-center rounded border-2 md:max-h-40 md:min-h-20 md:min-w-20"
         >
           {preview ? (
             <img
@@ -115,8 +115,8 @@ function AddProduct({ closeAddProduct, refresh }) {
           )}
         </div>
 
-        <div className="flex flex-col gap-0 lg:flex-row lg:gap-3">
-          <div className="flex flex-col gap-0 lg:gap-3">
+        <div className="flex flex-col gap-0 md:flex-row md:gap-3">
+          <div className="flex flex-col gap-0 md:gap-3">
             <div className="flex flex-col gap-1">
               <label className="font-bold text-[#BC303E]" htmlFor="NamaProduk">
                 Nama Produk
@@ -131,7 +131,7 @@ function AddProduct({ closeAddProduct, refresh }) {
                     [e.target.name]: e.target.value,
                   }))
                 }
-                className="h-9 w-60 rounded-lg border-2 border-black px-2 lg:h-10 lg:w-96"
+                className="h-9 w-60 rounded-lg border-2 border-black px-2 md:h-10 md:w-96"
               />
             </div>
 
@@ -149,12 +149,12 @@ function AddProduct({ closeAddProduct, refresh }) {
                     [e.target.name]: e.target.value,
                   }))
                 }
-                className="h-9 w-60 rounded-lg border-2 border-black px-2 lg:h-10 lg:w-96"
+                className="h-9 w-60 rounded-lg border-2 border-black px-2 md:h-10 md:w-96"
               />
             </div>
           </div>
 
-          <div className="flex flex-col gap-0 lg:gap-3">
+          <div className="flex flex-col gap-0 md:gap-3">
             <div className="flex flex-col gap-1">
               <label className="font-bold text-[#BC303E]" htmlFor="Kuantitas">
                 Kuantitas
@@ -169,7 +169,7 @@ function AddProduct({ closeAddProduct, refresh }) {
                     [e.target.name]: e.target.value,
                   }))
                 }
-                className="h-9 w-60 rounded-lg border-2 border-black px-2 lg:h-10 lg:w-96"
+                className="h-9 w-60 rounded-lg border-2 border-black px-2 md:h-10 md:w-96"
               />
             </div>
 
@@ -187,7 +187,7 @@ function AddProduct({ closeAddProduct, refresh }) {
                     [e.target.name]: e.target.value,
                   }))
                 }
-                className="h-9 w-60 rounded-lg border-2 border-black px-2 lg:h-10 lg:w-96"
+                className="h-9 w-60 rounded-lg border-2 border-black px-2 md:h-10 md:w-96"
               />
             </div>
           </div>
@@ -207,7 +207,7 @@ function AddProduct({ closeAddProduct, refresh }) {
                 [e.target.name]: e.target.value,
               }))
             }
-            className="h-9 w-60 rounded-lg border-2 border-black px-2 lg:h-10 lg:w-96"
+            className="h-9 w-60 rounded-lg border-2 border-black px-2 md:h-10 md:w-96"
           />
         </div>
         <button

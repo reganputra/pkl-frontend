@@ -60,7 +60,7 @@ function AddSuratJalan({ closeAddSuratJalan }) {
           type="text"
           name="SJalan"
           onChange={(e) => setSuratJalan(e.target.value)}
-          className="w-70 rounded-lg border-2 p-1 text-center lg:w-96"
+          className="w-70 rounded-lg border-2 p-1 text-center md:w-96"
         />
         <input
           type="submit"

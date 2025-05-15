@@ -34,7 +34,7 @@ function StatusProduct() {
   return (
     <>
       <div
-        className={`relative flex w-screen flex-col bg-[#F5F5F5] lg:w-auto lg:items-end lg:pt-30 ${active != 1 && "pb-13"}`}
+        className={`relative flex w-screen flex-col bg-[#F5F5F5] md:w-auto md:items-end md:pt-30 ${active != 1 && "pb-13"}`}
       >
         <div className="flex w-screen justify-center gap-20 bg-white py-4 text-black">
           <div
@@ -63,7 +63,7 @@ function StatusProduct() {
         {active == 1 && (
           <button
             onClick={handleCreatePO}
-            className="m-5 w-fit place-self-end rounded-2xl bg-[#BC303E] px-14 py-1.5 text-2xl font-bold lg:my-5 lg:mr-10 lg:place-self-auto lg:px-20 lg:py-2"
+            className="m-5 w-fit place-self-end rounded-2xl bg-[#BC303E] px-14 py-1.5 text-2xl font-bold md:my-5 md:mr-10 md:place-self-auto md:px-20 md:py-2"
           >
             Buat PO
           </button>
@@ -74,7 +74,7 @@ function StatusProduct() {
       {active == 2 && <SendingList />}
       {active == 3 && <DoneList />}
 
-      <div className="hidden bg-[#F5F5F5] pt-20 lg:block"></div>
+      <div className="hidden bg-[#F5F5F5] pt-20 md:block"></div>
     </>
   );
 }
