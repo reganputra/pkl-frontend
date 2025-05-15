@@ -1,7 +1,7 @@
 import { useState } from "react";
-import BoxIcon from "../../Elements/icons/box";
-import CheckIcon from "../../Elements/icons/check";
-import TruckIcon from "../../Elements/icons/truck";
+import BoxIcon from "../../Elements/Icons/Box.jsx";
+import CheckIcon from "../../Elements/Icons/Check.jsx";
+import TruckIcon from "../../Elements/Icons/Truck.jsx";
 import PendingList from "./PendingList";
 import SendingList from "./SendingList";
 import DoneList from "./DoneList";
@@ -16,13 +16,13 @@ function StatusProduct() {
     try {
       const token = Cookies.get("token");
       await axiosInstance.post(
-        "/po",
-        {},
-        {
-          headers: {
-            Authorization: token,
-          },
-        },
+          "/po",
+          {},
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
       );
       alert("PO baru sudah berhasil dibuat !!");
       setRefresh((prev) => !prev);
