@@ -102,7 +102,7 @@ function AddProduct({ closeAddProduct, refresh }) {
 
         <div
           onClick={triggerFileInput}
-          className="flex max-h-20 min-h-15 min-w-15 cursor-pointer items-center justify-center rounded border-2 md:max-h-40 md:min-h-20 md:min-w-20"
+          className="flex max-h-20 min-h-5 min-w-5 cursor-pointer items-center justify-center rounded border-2 md:max-h-40 md:min-h-20 md:min-w-20"
         >
           {preview ? (
             <img
