@@ -15,7 +15,7 @@ function StatusProduct() {
   const handleCreatePO = async () => {
     try {
       const token = Cookies.get("token");
-      const response = await axiosInstance.post(
+      await axiosInstance.post(
         "/po",
         {},
         {

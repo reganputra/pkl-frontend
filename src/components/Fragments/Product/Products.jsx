@@ -24,7 +24,7 @@ function Products() {
       }
     };
     fetchProducts();
-  }, [updateStock]);
+  }, [updateStock, page]);
 
   return (
     <>
