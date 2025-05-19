@@ -22,7 +22,7 @@ function PendingList({ refresh }) {
       }
     };
     fetchSending();
-  }, [refresh, refresh1]);
+  }, [refresh, refresh1, page]);
 
   return (
     <>
