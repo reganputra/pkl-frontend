@@ -1,21 +1,21 @@
-import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
-import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import axiosInstance from "../../../api/axiosinstance";
-import DeleteConfirm from "./DeleteConfirm";
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Cookies from "js-cookie";
+import axiosInstance from "../../../api/axiosinstance";
+import KonfirmasiHapus from "./KonfirmasiHapus";
 
-function ProductDetail({ data, onUpdateStock }) {
-  const [count, setCount] = useState(0);
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+function DetailProduk({ data, padaPerbaruiStok }) {
+  const [hitung, setHitung] = useState(0);
+  const [tampilKonfirmasiHapus, setTampilKonfirmasiHapus] = useState(false);
 
-  function handleUpdateStock() {
-    const updateStock = async () => {
+  function handlePerbaruiStock() {
+    const PerbaruiStock = async () => {
       try {
         const response = await axiosInstance.patch(
           `/items/${data._id}/update-quantity`,
-          { quantity: count },
+          { quantity: hitung },
           {
             headers: {
               Authorization: Cookies.get("token"),
@@ -23,18 +23,18 @@ function ProductDetail({ data, onUpdateStock }) {
           },
         );
         alert("Stock berhasil diupdate");
-        onUpdateStock();
-        setCount(0);
+        padaPerbaruiStok();
+        setHitung(0);
       } catch (error) {
         console.log(error.response?.data || error.message);
       }
     };
-    updateStock();
+    PerbaruiStock();
   }
 
-  function handleConfirmDelete() {
-    setShowDeleteConfirm(false);
-    const deleteproduct = async () => {
+  function handleKonfirmasiHapus() {
+    setTampilKonfirmasiHapus(false);
+    const HapusProduk = async () => {
       try {
         const response = await axiosInstance.delete(`/items/${data._id}`, {
           headers: {
@@ -42,16 +42,16 @@ function ProductDetail({ data, onUpdateStock }) {
           },
         });
         alert("Produk berhasil dihapus !!");
-        onUpdateStock();
+        padaPerbaruiStok();
       } catch (error) {
         console.log(error.response?.data || error.message);
       }
     };
-    deleteproduct();
+    HapusProduk();
   }
 
-  function handleCancelDelete() {
-    setShowDeleteConfirm(false);
+  function handleBatalHapus() {
+    setTampilKonfirmasiHapus(false);
     alert("Produk tidak jadi dihapus !!");
   }
 
@@ -75,21 +75,19 @@ function ProductDetail({ data, onUpdateStock }) {
 
         <div className="justify-centers flex flex-col items-center gap-3 md:items-end">
           <div className="flex flex-col items-center justify-center gap-1">
-            <p className="text-[20px] text-[#BC303E]">
-              Stock : {data.quantity}
-            </p>
+            <p className="text-[20px] text-[#BC303E]">Stok : {data.quantity}</p>
             <div className="flex items-center justify-center gap-3">
               <FontAwesomeIcon
                 icon={faMinus}
-                onClick={() => setCount(count - 1)}
+                onClick={() => setHitung(hitung - 1)}
                 className="!h-5 w-5 cursor-pointer rounded-4xl bg-[#D9D9D9] p-1"
               />
               <span className="rounded border-2 border-[#BC303E] px-7 text-[20px]">
-                {count}
+                {hitung}
               </span>
               <FontAwesomeIcon
                 icon={faPlus}
-                onClick={() => setCount(count + 1)}
+                onClick={() => setHitung(hitung + 1)}
                 className="!h-5 w-5 cursor-pointer rounded-4xl bg-[#BC303E] p-1 text-white"
               />
             </div>
@@ -97,30 +95,30 @@ function ProductDetail({ data, onUpdateStock }) {
           <div className="flex flex-wrap items-center gap-3">
             <FontAwesomeIcon
               icon={faTrashCan}
-              onClick={() => setShowDeleteConfirm(true)}
+              onClick={() => setTampilKonfirmasiHapus(true)}
               className="!h-[4.5vw] cursor-pointer rounded border-2 border-[#BC303E] p-1 text-[#BC303E] md:!h-7.5"
             />
             <button className="rounded border-2 border-[#BC303E] bg-white px-3 py-1 text-[3vw] whitespace-nowrap text-[#BC303E] md:text-[20px]">
               Edit Produk
             </button>
             <button
-              onClick={handleUpdateStock}
+              onClick={handlePerbaruiStock}
               className="rounded border-2 border-[#BC303E] bg-[#BC303E] px-3 py-1 text-[3vw] whitespace-nowrap text-white md:text-[20px]"
             >
-              Update Stock
+              Perbarui Stok
             </button>
           </div>
         </div>
       </div>
 
-      {showDeleteConfirm && (
-        <DeleteConfirm
-          closeDeleteConfirm={() => setShowDeleteConfirm(false)}
-          confirm={() => handleConfirmDelete()}
-          cancel={() => handleCancelDelete()}
+      {tampilKonfirmasiHapus && (
+        <KonfirmasiHapus
+          tutupKonfirmasiHapus={() => setTampilKonfirmasiHapus(false)}
+          konfirmasi={() => handleKonfirmasiHapus()}
+          batal={() => handleBatalHapus()}
         />
       )}
     </>
   );
 }
-export default ProductDetail;
+export default DetailProduk;

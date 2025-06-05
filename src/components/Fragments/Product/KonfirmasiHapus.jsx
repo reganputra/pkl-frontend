@@ -1,9 +1,9 @@
-function DeleteConfirm({ closeDeleteConfirm, confirm, cancel }) {
+function KonfirmasiHapus({ tutupKonfirmasiHapus, konfirmasi, batal }) {
   return (
     <div className="fixed inset-0 z-20 flex items-center justify-center">
       <div
         className="absolute inset-0 bg-black/40"
-        onClick={() => closeDeleteConfirm()}
+        onClick={() => tutupKonfirmasiHapus()}
       ></div>
 
       <div className="z-30 w-80 rounded-lg border bg-white px-5 py-10 md:w-100">
@@ -12,13 +12,13 @@ function DeleteConfirm({ closeDeleteConfirm, confirm, cancel }) {
         </p>
         <div className="mt-10 flex w-full justify-around">
           <button
-            onClick={() => cancel()}
+            onClick={() => batal()}
             className="w-20 rounded-lg border-2 bg-white px-5 py-2 font-bold"
           >
             Tidak
           </button>
           <button
-            onClick={() => confirm()}
+            onClick={() => konfirmasi()}
             className="w-20 rounded-lg bg-[#BC303E] px-5 py-2 font-bold text-white"
           >
             Ya
@@ -29,4 +29,4 @@ function DeleteConfirm({ closeDeleteConfirm, confirm, cancel }) {
   );
 }
 
-export default DeleteConfirm;
+export default KonfirmasiHapus;

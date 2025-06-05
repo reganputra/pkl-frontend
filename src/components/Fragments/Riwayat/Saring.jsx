@@ -1,46 +1,46 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../../../api/axiosinstance";
-import HistoryList from "./HistoryList";
 import Cookies from "js-cookie";
-import CustomPagination from "../../Elements/Pagination";
+import ListRiwayat from "./ListRiwayat";
+import HalamanKustom from "../../Elements/Halaman";
+import axiosInstance from "../../../api/axiosinstance";
 
-function Filter() {
-  const [history, setHistory] = useState(null);
-  const [year, setYear] = useState(2025);
-  const [month, setMonth] = useState(1);
-  const [page, setPage] = useState(1);
+function Saring() {
+  const [riwayat, setRiwayat] = useState(null);
+  const [tahun, setTahun] = useState(2025);
+  const [bulan, setBulan] = useState(1);
+  const [halaman, setHalaman] = useState(1);
 
   useEffect(() => {
-    const fetchHistory = async () => {
+    const fetchRiwayat = async () => {
       try {
         const response = await axiosInstance.get("/riwayat", {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: Cookies.get("token"),
           },
-          params: { page: page },
+          params: { page: halaman },
         });
-        setHistory(response.data);
+        setRiwayat(response.data);
       } catch (error) {
         console.log(error.response?.data || error.message);
       }
     };
-    fetchHistory();
-  }, [page]);
+    fetchRiwayat();
+  }, [halaman]);
 
-  const handleSubmit = async (e) => {
+  const handleKirim = async (e) => {
     e.preventDefault();
-    const fetchFilter = async () => {
+    const fetchSaring = async () => {
       try {
-        const response = await axiosInstance.get(`/riwayat/${year}/${month}`, {
+        const response = await axiosInstance.get(`/riwayat/${tahun}/${bulan}`, {
           headers: { Authorization: Cookies.get("token") },
         });
-        setHistory(response.data);
+        setRiwayat(response.data);
       } catch (error) {
         console.log(error.response?.data || error.message);
       }
     };
-    fetchFilter();
+    fetchSaring();
   };
 
   return (
@@ -48,15 +48,15 @@ function Filter() {
       <form
         action=""
         method="post"
-        onSubmit={handleSubmit}
+        onSubmit={handleKirim}
         className="flex flex-col items-center justify-center gap-5 bg-[#F5F5F5] py-10 md:flex-row"
       >
         <div className="flex flex-wrap justify-center gap-5">
           <select
-            name="month"
-            id="month"
+            name="bulan"
+            id="bulan"
             className="w-40 rounded border bg-white px-6 py-2 text-center text-black"
-            onChange={(e) => setMonth(e.target.value)}
+            onChange={(e) => setBulan(e.target.value)}
           >
             <option value="01">Januari</option>
             <option value="02">Februari</option>
@@ -73,10 +73,10 @@ function Filter() {
           </select>
 
           <select
-            name="year"
-            id="year"
+            name="tahun"
+            id="tahun"
             className="w-40 rounded border bg-white px-6 py-2 text-center text-black"
-            onChange={(e) => setYear(e.target.value)}
+            onChange={(e) => setTahun(e.target.value)}
           >
             <option value="2025">2025</option>
             <option value="2024">2024</option>
@@ -92,14 +92,14 @@ function Filter() {
         </button>
       </form>
 
-      {history && <HistoryList data={history.data} />}
+      {riwayat && <ListRiwayat data={riwayat.data} />}
 
-      <CustomPagination
-        current={page}
-        total={history?.totalPages}
-        onChange={(x) => setPage(x)}
+      <HalamanKustom
+        sekarang={halaman}
+        total={riwayat?.totalPages}
+        ubah={(x) => setHalaman(x)}
       />
     </>
   );
 }
-export default Filter;
+export default Saring;

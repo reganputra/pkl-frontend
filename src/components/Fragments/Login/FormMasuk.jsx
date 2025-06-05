@@ -1,15 +1,15 @@
-import { useState } from "react";
 import Cookies from "js-cookie";
-import axiosInstance from "../../../api/axiosinstance";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "../../../api/axiosinstance";
 
-function Login() {
+function Masuk() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleMasuk = async (e) => {
     e.preventDefault();
     try {
       const response = await axiosInstance.post("/users/login", {
@@ -18,7 +18,7 @@ function Login() {
       });
 
       Cookies.set("token", `Bearer ${response.data.token}`, { expires: 7 });
-      navigate("/home");
+      navigate("/rumah");
     } catch (error) {
       alert(error.response?.data.message);
       console.log(error.response?.data || error.message);
@@ -29,10 +29,10 @@ function Login() {
     <>
       <form
         method="post"
-        onSubmit={handleLogin}
+        onSubmit={handleMasuk}
         className="z-1 flex h-fit flex-col items-center justify-center gap-3 rounded-lg bg-white p-6 text-black"
       >
-        <h2 className="text-2xl font-bold">Login Akun</h2>
+        <h2 className="text-2xl font-bold">Masuk Akun</h2>
 
         <div className="flex flex-col">
           <label htmlFor="email">Email</label>
@@ -49,7 +49,7 @@ function Login() {
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Kata Sandi</label>
           <input
             type="password"
             name="password"
@@ -66,7 +66,7 @@ function Login() {
           type="submit"
           className="mt-4 w-full rounded-md bg-[#FFCF45] py-2 text-center"
         >
-          Login
+          Masuk
         </button>
 
         <p>
@@ -79,4 +79,4 @@ function Login() {
     </>
   );
 }
-export default Login;
+export default Masuk;

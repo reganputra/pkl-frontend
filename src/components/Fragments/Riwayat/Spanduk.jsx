@@ -1,4 +1,4 @@
-function Banner() {
+function Spanduk() {
   return (
     <>
       <div className="hidden h-15 md:block"></div>
@@ -18,4 +18,4 @@ function Banner() {
     </>
   );
 }
-export default Banner;
+export default Spanduk;

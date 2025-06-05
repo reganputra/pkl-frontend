@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   // baseURL: process.env.API_URL
-  baseURL: "https://pkl-backend-607339556428.asia-southeast2.run.app/api",
+  baseURL: "http://localhost:3000/api",
   timeout: 10000,
 });
 

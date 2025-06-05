@@ -1,6 +1,6 @@
-import Signup from "../components/Fragments/Login/FormSignup";
+import Daftar from "../components/Fragments/Login/FormDaftar";
 
-function SignupPage() {
+function HalamanDaftar() {
   return (
     <>
       <div className="flex w-screen items-center justify-end">
@@ -15,10 +15,10 @@ function SignupPage() {
             alt=""
             className="absolute top-0 left-0 h-screen w-full"
           />
-          <Signup />
+          <Daftar />
         </div>
       </div>
     </>
   );
 }
-export default SignupPage;
+export default HalamanDaftar;

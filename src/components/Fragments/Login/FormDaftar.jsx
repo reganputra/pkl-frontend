@@ -1,14 +1,14 @@
 import { useState } from "react";
-import axiosInstance from "../../../api/axiosinstance";
 import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "../../../api/axiosinstance";
 
-function Signup() {
+function Daftar() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSignUp = async (e) => {
+  const handleDaftar = async (e) => {
     e.preventDefault();
     try {
       const response = await axiosInstance.post("/users/register", {
@@ -29,13 +29,13 @@ function Signup() {
       <form
         action=""
         method="post"
-        onSubmit={handleSignUp}
+        onSubmit={handleDaftar}
         className="z-1 flex h-fit max-w-4/5 flex-col items-center justify-center gap-3 rounded-lg bg-white p-6 text-black"
       >
         <h2 className="text-2xl font-bold">Daftar Akun</h2>
 
         <div className="flex flex-col">
-          <label htmlFor="nama">Username</label>
+          <label htmlFor="nama">Nama</label>
           <input
             type="text"
             name="nama"
@@ -93,4 +93,4 @@ function Signup() {
     </>
   );
 }
-export default Signup;
+export default Daftar;

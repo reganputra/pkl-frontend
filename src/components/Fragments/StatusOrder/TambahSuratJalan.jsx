@@ -1,13 +1,13 @@
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Cookies from "js-cookie";
 import { useState } from "react";
 import axiosInstance from "../../../api/axiosinstance";
-import Cookies from "js-cookie";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function AddSuratJalan({ closeAddSuratJalan }) {
+function TambahSuratJalan({ closeTambahSuratJalan }) {
   const [suratJalan, setSuratJalan] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleKirim = async (e) => {
     e.preventDefault();
 
     try {
@@ -23,13 +23,13 @@ function AddSuratJalan({ closeAddSuratJalan }) {
       console.log(suratJalan);
       console.log(response);
       alert("Barang sudah dikirim !!");
-      closeAddSuratJalan();
+      closeTambahSuratJalan();
     } catch (error) {
       console.log(error.response?.data || error.message);
     }
   };
 
-  const handleKeyDown = (event) => {
+  const handleTombolEnter = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
     }
@@ -39,21 +39,21 @@ function AddSuratJalan({ closeAddSuratJalan }) {
     <div className="fixed inset-0 z-20 flex items-center justify-center">
       <div
         className="absolute inset-0 bg-black/40"
-        onClick={() => closeAddSuratJalan()}
+        onClick={() => closeTambahSuratJalan()}
       ></div>
 
       <form
         action=""
         method="post"
-        onSubmit={handleSubmit}
-        onKeyDown={handleKeyDown}
+        onSubmit={handleKirim}
+        onKeyDown={handleTombolEnter}
         className="relative flex w-fit flex-col items-center justify-center gap-3 rounded border bg-white p-8 text-black"
         onClick={(e) => e.stopPropagation()}
       >
         <FontAwesomeIcon
           icon={faXmark}
           className="flex !h-6 cursor-pointer self-end"
-          onClick={() => closeAddSuratJalan()}
+          onClick={() => closeTambahSuratJalan()}
         />
         <p className="text-3xl font-bold text-[#BC303E]">No Surat Jalan</p>
         <input
@@ -72,4 +72,4 @@ function AddSuratJalan({ closeAddSuratJalan }) {
   );
 }
 
-export default AddSuratJalan;
+export default TambahSuratJalan;

@@ -1,45 +1,45 @@
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Cookies from "js-cookie";
 import { useRef, useState } from "react";
 import axiosInstance from "../../../api/axiosinstance";
-import Cookies from "js-cookie";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function AddProduct({ closeAddProduct, refresh }) {
-  const [preview, setPreview] = useState(null);
+function TambahProduk({ tutupTambahProduk, ulang }) {
+  const [pratinjau, setPratinjau] = useState(null);
   const fileInputRef = useRef();
-  const [formValue, setFormValue] = useState({
+  const [nilaiForm, setNilaiForm] = useState({
     name: "",
     kodeBarang: "",
     quantity: "",
     category: "",
     ukuranKemasan: "",
   });
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [gambarTerpilih, setGambarTerpilih] = useState(null);
 
-  const handleImageChange = (e) => {
+  const handleUbahGambar = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setSelectedImage(file);
-      const previewUrl = URL.createObjectURL(file);
-      setPreview(previewUrl);
+      setGambarTerpilih(file);
+      const pratinjauUrl = URL.createObjectURL(file);
+      setPratinjau(pratinjauUrl);
     }
   };
 
-  const triggerFileInput = () => {
+  const pemicuMasukanFile = () => {
     fileInputRef.current.click();
   };
 
-  const handleSubmit = async (e) => {
+  const handleKirim = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("image", selectedImage);
-    Object.entries(formValue).forEach(([key, value]) => {
+    formData.append("image", gambarTerpilih);
+    Object.entries(nilaiForm).forEach(([key, value]) => {
       formData.append(key, value);
     });
 
     try {
-      closeAddProduct();
+      tutupTambahProduk();
       alert("Mohon ditunggu, produk sedang ditambahkan");
       const response = await axiosInstance.post("/items", formData, {
         headers: {
@@ -51,23 +51,23 @@ function AddProduct({ closeAddProduct, refresh }) {
       alert("Produk berhasil ditambahkan");
       console.log("success", response.data);
 
-      setFormValue({
+      setNilaiForm({
         name: "",
         kodeBarang: "",
         quantity: "",
         category: "",
         ukuranKemasan: "",
       });
-      setSelectedImage(null);
-      setPreview(null);
-      refresh();
+      setGambarTerpilih(null);
+      setPratinjau(null);
+      ulang();
     } catch (error) {
       alert("Produk gagal ditambahkan");
       console.log(error.response?.data || error.message);
     }
   };
 
-  const handleKeyDown = (event) => {
+  const handleTombolEnter = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
     }
@@ -77,39 +77,39 @@ function AddProduct({ closeAddProduct, refresh }) {
     <div className="fixed inset-0 z-20 flex items-center justify-center">
       <div
         className="absolute inset-0 bg-black/40"
-        onClick={() => closeAddProduct()}
+        onClick={() => tutupTambahProduk()}
       ></div>
 
       <form
         action=""
         method="post"
-        onSubmit={handleSubmit}
-        onKeyDown={handleKeyDown}
+        onSubmit={handleKirim}
+        onKeyDown={handleTombolEnter}
         className="relative flex w-4/5 flex-col items-center justify-center gap-0 rounded border bg-white p-4 text-black md:gap-3 md:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         <FontAwesomeIcon
           icon={faXmark}
           className="flex !h-6 cursor-pointer self-end"
-          onClick={() => closeAddProduct()}
+          onClick={() => tutupTambahProduk()}
         />
 
         <input
           type="file"
           accept="image/*"
-          onChange={handleImageChange}
+          onChange={handleUbahGambar}
           ref={fileInputRef}
           style={{ display: "none" }}
         />
 
         <div
-          onClick={triggerFileInput}
+          onClick={pemicuMasukanFile}
           className="flex cursor-pointer items-center justify-center rounded border-2"
         >
-          {preview ? (
+          {pratinjau ? (
             <img
-              src={preview}
-              alt="Preview"
+              src={pratinjau}
+              alt="pratinjau"
               className="h-20 w-full rounded object-cover md:h-30"
             />
           ) : (
@@ -128,7 +128,7 @@ function AddProduct({ closeAddProduct, refresh }) {
                 name="name"
                 id="name"
                 onChange={(e) =>
-                  setFormValue((prev) => ({
+                  setNilaiForm((prev) => ({
                     ...prev,
                     [e.target.name]: e.target.value,
                   }))
@@ -146,7 +146,7 @@ function AddProduct({ closeAddProduct, refresh }) {
                 name="kodeBarang"
                 id="kodeBarang"
                 onChange={(e) =>
-                  setFormValue((prev) => ({
+                  setNilaiForm((prev) => ({
                     ...prev,
                     [e.target.name]: e.target.value,
                   }))
@@ -166,7 +166,7 @@ function AddProduct({ closeAddProduct, refresh }) {
                 name="quantity"
                 id="quantity"
                 onChange={(e) =>
-                  setFormValue((prev) => ({
+                  setNilaiForm((prev) => ({
                     ...prev,
                     [e.target.name]: e.target.value,
                   }))
@@ -184,7 +184,7 @@ function AddProduct({ closeAddProduct, refresh }) {
                 name="category"
                 id="category"
                 onChange={(e) =>
-                  setFormValue((prev) => ({
+                  setNilaiForm((prev) => ({
                     ...prev,
                     [e.target.name]: e.target.value,
                   }))
@@ -204,7 +204,7 @@ function AddProduct({ closeAddProduct, refresh }) {
             name="ukuranKemasan"
             id="ukuranKemasan"
             onChange={(e) =>
-              setFormValue((prev) => ({
+              setNilaiForm((prev) => ({
                 ...prev,
                 [e.target.name]: e.target.value,
               }))
@@ -214,7 +214,7 @@ function AddProduct({ closeAddProduct, refresh }) {
         </div>
         <button
           type="submit"
-          disabled={!selectedImage || !formValue.name}
+          disabled={!gambarTerpilih || !nilaiForm.name}
           className="mt-4 rounded bg-[#BC303E] px-12 py-2 font-bold text-white disabled:opacity-50"
         >
           Tambahkan
@@ -224,4 +224,4 @@ function AddProduct({ closeAddProduct, refresh }) {
   );
 }
 
-export default AddProduct;
+export default TambahProduk;
