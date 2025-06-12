@@ -7,9 +7,20 @@ import axiosInstance from "../../../api/axiosinstance";
 
 function Produk() {
   const [tampilTambahkanProduk, setTampilTambahkanProduk] = useState(false);
+  const [dataTerpilih, setDataTerpilih] = useState(null);
   const [produk, setProduk] = useState(null);
   const [perbaruiProduk, setPerbaruiProduk] = useState(false);
   const [halaman, setHalaman] = useState(1);
+
+  const handleEditProduk = (x) => {
+    setTampilTambahkanProduk(true);
+    setDataTerpilih(x);
+  };
+
+  const handleTutupEdit = () => {
+    setTampilTambahkanProduk(false);
+    setDataTerpilih(null);
+  };
 
   useEffect(() => {
     const fetchProduk = async () => {
@@ -18,6 +29,7 @@ function Produk() {
           headers: { Authorization: Cookies.get("token") },
           params: { page: halaman },
         });
+        console.log(response);
         setProduk(response.data);
       } catch (error) {
         console.log(error.response?.data || error.message);
@@ -42,6 +54,7 @@ function Produk() {
           <DetailProduk
             data={product}
             key={product._id}
+            handlePilih={handleEditProduk}
             padaPerbaruiStok={() => setPerbaruiProduk(!perbaruiProduk)}
           />
         ))}
@@ -49,14 +62,15 @@ function Produk() {
 
       <HalamanKustom
         sekarang={halaman}
-        total={produk?.totalHalamans}
+        total={produk?.totalPages}
         ubah={(x) => setHalaman(x)}
       />
 
       {tampilTambahkanProduk && (
         <TambahProduk
-          tutupTambahProduk={() => setTampilTambahkanProduk(false)}
+          tutupTambahProduk={() => handleTutupEdit()}
           ulang={() => setPerbaruiProduk(!perbaruiProduk)}
+          data={dataTerpilih}
         />
       )}
     </>

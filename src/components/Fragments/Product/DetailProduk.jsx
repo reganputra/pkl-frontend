@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import axiosInstance from "../../../api/axiosinstance";
 import KonfirmasiHapus from "./KonfirmasiHapus";
 
-function DetailProduk({ data, padaPerbaruiStok }) {
+function DetailProduk({ data, padaPerbaruiStok, handlePilih }) {
   const [hitung, setHitung] = useState(0);
   const [tampilKonfirmasiHapus, setTampilKonfirmasiHapus] = useState(false);
 
@@ -98,7 +98,10 @@ function DetailProduk({ data, padaPerbaruiStok }) {
               onClick={() => setTampilKonfirmasiHapus(true)}
               className="!h-[4.5vw] cursor-pointer rounded border-2 border-[#BC303E] p-1 text-[#BC303E] md:!h-7.5"
             />
-            <button className="rounded border-2 border-[#BC303E] bg-white px-3 py-1 text-[3vw] whitespace-nowrap text-[#BC303E] md:text-[20px]">
+            <button
+              onClick={() => handlePilih(data)}
+              className="rounded border-2 border-[#BC303E] bg-white px-3 py-1 text-[3vw] whitespace-nowrap text-[#BC303E] md:text-[20px]"
+            >
               Edit Produk
             </button>
             <button
