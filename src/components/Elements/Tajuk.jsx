@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-function Header({ active }) {
-  const navigate = useNavigate();
-  function handleLogout() {
+function Tajuk({ active }) {
+  const navigasi = useNavigate();
+  function handleKeluar() {
     Cookies.remove("token");
-    navigate("/");
+    navigasi("/");
   }
   return (
     <>
@@ -16,7 +16,7 @@ function Header({ active }) {
           className="hidden w-30 md:block"
         />
         <div className="flex w-full items-center justify-evenly font-bold text-black">
-          <Link to="/home" className={active == 1 ? "text-[#BC303E]" : ""}>
+          <Link to="/rumah" className={active == 1 ? "text-[#BC303E]" : ""}>
             Produk
           </Link>
           <Link to="/status" className={active == 2 ? "text-[#BC303E]" : ""}>
@@ -26,20 +26,20 @@ function Header({ active }) {
             Riwayat
           </Link>
           <button
-            onClick={() => handleLogout()}
+            onClick={() => handleKeluar()}
             className="block h-max cursor-pointer rounded border-2 border-[#BC303E] bg-white px-4 py-1 text-[#BC303E] md:hidden"
           >
-            Logout
+            Keluar
           </button>
         </div>
         <button
-          onClick={() => handleLogout()}
+          onClick={() => handleKeluar()}
           className="hidden h-max cursor-pointer rounded border-2 border-[#BC303E] bg-white px-4 py-1 text-[#BC303E] md:block"
         >
-          Logout
+          Keluar
         </button>
       </div>
     </>
   );
 }
-export default Header;
+export default Tajuk;

@@ -1,6 +1,6 @@
-import Login from "../components/Fragments/Login/FormLogin";
+import Masuk from "../components/Fragments/Login/FormMasuk";
 
-function LoginPage() {
+function HalamanMasuk() {
   return (
     <>
       <div className="flex w-screen items-center justify-end">
@@ -15,10 +15,10 @@ function LoginPage() {
             alt=""
             className="absolute top-0 left-0 h-screen w-full"
           />
-          <Login />
+          <Masuk />
         </div>
       </div>
     </>
   );
 }
-export default LoginPage;
+export default HalamanMasuk;

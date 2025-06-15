@@ -1,20 +1,20 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Homepage from "./Pages/Homepage";
-import LoginPage from "./Pages/LoginPage";
-import SignupPage from "./Pages/SignupPage";
-import HistoryPage from "./Pages/HistoryPage";
-import StatusOrderPage from "./Pages/StatusOrderPage";
+import HalamanUtama from "./Pages/HalamanUtama";
+import HalamanMasuk from "./Pages/HalamanMasuk";
+import HalamanDaftar from "./Pages/HalamanDaftar";
+import HalamanRiwayat from "./Pages/HalamanRiwayat";
+import HalamanStatusPesanan from "./Pages/HalamanStatusPesanan";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LoginPage />}></Route>
-        <Route path="/daftar" element={<SignupPage />}></Route>
-        <Route path="/home" element={<Homepage />}></Route>
-        <Route path="/status" element={<StatusOrderPage />}></Route>
-        <Route path="/riwayat" element={<HistoryPage />}></Route>
+        <Route path="/" element={<HalamanMasuk />}></Route>
+        <Route path="/daftar" element={<HalamanDaftar />}></Route>
+        <Route path="/rumah" element={<HalamanUtama />}></Route>
+        <Route path="/status" element={<HalamanStatusPesanan />}></Route>
+        <Route path="/riwayat" element={<HalamanRiwayat />}></Route>
       </Routes>
     </>
   );

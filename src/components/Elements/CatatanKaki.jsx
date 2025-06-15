@@ -1,4 +1,4 @@
-function Footer() {
+function CatatanKaki() {
   return (
     <>
       <div className="flex w-screen flex-col items-center bg-[#FFCF45] pb-20 text-black md:pb-0">
@@ -35,7 +35,7 @@ function Footer() {
             </div>
             <div>
               <ul>
-                <li className="font-bold">Follow</li>
+                <li className="font-bold">Ikuti</li>
                 <li>Instagram</li>
                 <li>Facebook</li>
                 <li>Twitter</li>
@@ -50,4 +50,4 @@ function Footer() {
     </>
   );
 }
-export default Footer;
+export default CatatanKaki;

@@ -1,4 +1,4 @@
-function HistoryCard({ data }) {
+function KartuRiwayat({ data }) {
   return (
     <div className="flex flex-col gap-5 bg-[#F5F5F5]">
       <div className="flex flex-col justify-between gap-5 bg-white px-10 py-6 text-black md:flex-row md:gap-0">
@@ -61,4 +61,4 @@ function HistoryCard({ data }) {
     </div>
   );
 }
-export default HistoryCard;
+export default KartuRiwayat;

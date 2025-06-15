@@ -1,9 +1,9 @@
 import Cookies from "js-cookie";
 import axiosInstance from "../../../api/axiosinstance";
-import StatusProductDetail from "../../Elements/StatusProductDetail";
+import StatusProdukDetail from "../../Elements/StatusProdukDetail";
 
-function PendingCard({ data, refresh }) {
-  const handleClick = async () => {
+function KartuTunggu({ data, ulang }) {
+  const handleKlik = async () => {
     try {
       const response = await axiosInstance.put(
         `/po/update-status/sending/${data?.nomorPO}`,
@@ -12,7 +12,7 @@ function PendingCard({ data, refresh }) {
           headers: { Authorization: Cookies.get("token") },
         },
       );
-      refresh();
+      ulang();
     } catch (error) {
       console.log(error);
     }
@@ -20,18 +20,18 @@ function PendingCard({ data, refresh }) {
 
   return (
     <>
-      <StatusProductDetail data={data}>
+      <StatusProdukDetail data={data}>
         <p className="text-[21px]/9 font-bold text-[#BC303E]">
           Menunggu Konfirmasi
         </p>
         <button
-          onClick={() => handleClick()}
+          onClick={() => handleKlik()}
           className="rounded-lg bg-[#BC303E] px-5 py-2 font-bold text-white"
         >
           Kirim
         </button>
-      </StatusProductDetail>
+      </StatusProdukDetail>
     </>
   );
 }
-export default PendingCard;
+export default KartuTunggu;

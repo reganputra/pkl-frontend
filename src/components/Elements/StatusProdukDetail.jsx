@@ -1,4 +1,4 @@
-function StatusProductDetail({ data, children }) {
+function StatusProdukDetail({ data, children }) {
   return (
     <>
       <div className="flex flex-col justify-around bg-white px-5 py-6 text-black md:flex-row md:px-10">
@@ -23,4 +23,4 @@ function StatusProductDetail({ data, children }) {
     </>
   );
 }
-export default StatusProductDetail;
+export default StatusProdukDetail;
